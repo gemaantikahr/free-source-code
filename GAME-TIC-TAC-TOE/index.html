@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tic-Tac-Toe</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 h-screen flex items-center justify-center">
+  <div class="text-center">
+    <h1 class="text-3xl font-bold mb-6">Tic-Tac-Toe</h1>
+
+    <!-- Game Board with border and gap -->
+    <div id="board" class="grid grid-cols-3 gap-1 w-64 mx-auto">
+      <div data-index="0" class="cell bg-blue-200 h-24 w-24 flex items-center justify-center text-4xl font-bold cursor-pointer border border-gray-400"></div>
+      <div data-index="1" class="cell bg-blue-200 h-24 w-24 flex items-center justify-center text-4xl font-bold cursor-pointer border border-gray-400"></div>
+      <div data-index="2" class="cell bg-blue-200 h-24 w-24 flex items-center justify-center text-4xl font-bold cursor-pointer border border-gray-400"></div>
+      <div data-index="3" class="cell bg-blue-200 h-24 w-24 flex items-center justify-center text-4xl font-bold cursor-pointer border border-gray-400"></div>
+      <div data-index="4" class="cell bg-blue-200 h-24 w-24 flex items-center justify-center text-4xl font-bold cursor-pointer border border-gray-400"></div>
+      <div data-index="5" class="cell bg-blue-200 h-24 w-24 flex items-center justify-center text-4xl font-bold cursor-pointer border border-gray-400"></div>
+      <div data-index="6" class="cell bg-blue-200 h-24 w-24 flex items-center justify-center text-4xl font-bold cursor-pointer border border-gray-400"></div>
+      <div data-index="7" class="cell bg-blue-200 h-24 w-24 flex items-center justify-center text-4xl font-bold cursor-pointer border border-gray-400"></div>
+      <div data-index="8" class="cell bg-blue-200 h-24 w-24 flex items-center justify-center text-4xl font-bold cursor-pointer border border-gray-400"></div>
+    </div>
+
+    <!-- Game Info -->
+    <div id="gameInfo" class="mt-6 text-xl font-semibold">Player A's turn</div>
+
+    <!-- Reset Button -->
+    <button id="resetBtn" class="mt-6 px-6 py-2 bg-red-500 text-white rounded hover:bg-red-600">
+      Reset Game
+    </button>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+    <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+      <h2 id="modalMessage" class="text-2xl font-bold mb-4">Player A wins!</h2>
+      <button id="closeModalBtn" class="mt-4 px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Close</button>
+    </div>
+  </div>
+
+  <script>
+    const cells = document.querySelectorAll('.cell');
+    const gameInfo = document.getElementById('gameInfo');
+    const resetBtn = document.getElementById('resetBtn');
+    const modal = document.getElementById('modal');
+    const modalMessage = document.getElementById('modalMessage');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    
+    // Players A and B with X and O marks
+    let currentPlayer = 'X';
+    let playerA = 'A';
+    let playerB = 'B';
+    let boardState = ['', '', '', '', '', '', '', '', ''];
+    let isGameOver = false;
+
+    const winningCombinations = [
+      [0, 1, 2], [3, 4, 5], [6, 7, 8],  // Rows
+      [0, 3, 6], [1, 4, 7], [2, 5, 8],  // Columns
+      [0, 4, 8], [2, 4, 6]              // Diagonals
+    ];
+
+    // Function to handle cell clicks
+    function handleCellClick(e) {
+      const index = e.target.getAttribute('data-index');
+
+      if (boardState[index] === '' && !isGameOver) {
+        boardState[index] = currentPlayer;
+        e.target.textContent = currentPlayer;
+        checkWinner();
+        if (!isGameOver) switchPlayer();
+      }
+    }
+
+    // Function to switch player
+    function switchPlayer() {
+      currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+      const currentPlayerName = currentPlayer === 'X' ? playerA : playerB;
+      gameInfo.textContent = `Player ${currentPlayerName}'s turn`;
+    }
+
+    // Function to check for a winner
+    function checkWinner() {
+      for (let combo of winningCombinations) {
+        const [a, b, c] = combo;
+        if (boardState[a] && boardState[a] === boardState[b] && boardState[a] === boardState[c]) {
+          highlightWinningLine(combo);
+          const winner = boardState[a] === 'X' ? playerA : playerB;
+          gameInfo.textContent = `Player ${winner} wins!`;
+          showModal(`Player ${winner} wins!`);
+          isGameOver = true;
+          return;
+        }
+      }
+
+      // Check for a draw
+      if (!boardState.includes('') && !isGameOver) {
+        gameInfo.textContent = 'It\'s a draw!';
+        showModal('It\'s a draw!');
+        isGameOver = true;
+      }
+    }
+
+    // Function to highlight the winning line
+    function highlightWinningLine(combo) {
+      combo.forEach(index => {
+        cells[index].classList.add('bg-green-300');
+      });
+    }
+
+    // Show modal with winner message
+    function showModal(message) {
+      modalMessage.textContent = message;
+      modal.classList.remove('hidden');
+    }
+
+    // Close the modal and reset the game
+    closeModalBtn.addEventListener('click', () => {
+      modal.classList.add('hidden');
+      resetGame();
+    });
+
+    // Reset the game
+    function resetGame() {
+      boardState = ['', '', '', '', '', '', '', '', ''];
+      cells.forEach(cell => {
+        cell.textContent = '';
+        cell.classList.remove('bg-green-300');
+      });
+      isGameOver = false;
+      currentPlayer = 'X';
+      gameInfo.textContent = `Player A's turn`;
+    }
+
+    // Add event listeners to each cell
+    cells.forEach(cell => cell.addEventListener('click', handleCellClick));
+
+    // Add event listener to reset button
+    resetBtn.addEventListener('click', resetGame);
+  </script>
+</body>
+</html>

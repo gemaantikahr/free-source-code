@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dzikir Counter</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 h-screen flex items-center justify-center">
+  <div class="bg-white p-6 rounded-lg shadow-md text-center w-96">
+    <h1 class="text-2xl font-bold mb-4">Dzikir Counter</h1>
+
+    <!-- Counter Display -->
+    <div id="counter" class="text-5xl font-bold text-gray-800 mb-4">0</div>
+
+    <!-- Buttons -->
+    <div class="space-x-4">
+      <button id="incrementBtn" class="px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+        Count
+      </button>
+      <button id="resetBtn" class="px-6 py-2 bg-red-500 text-white rounded hover:bg-red-600">
+        Reset
+      </button>
+    </div>
+
+    <!-- Session Tracking -->
+    <h2 class="text-xl font-semibold mt-6">Session Count</h2>
+    <div id="sessionCounter" class="text-lg font-medium text-gray-700">0</div>
+
+    <!-- Session Reset Button -->
+    <button id="resetSessionBtn" class="mt-4 px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600">
+      Reset Session
+    </button>
+  </div>
+
+  <script>
+    // Initialize counters
+    let count = 0;
+    let sessionCount = localStorage.getItem('sessionCount') || 0;
+
+    // DOM elements
+    const counterDisplay = document.getElementById('counter');
+    const sessionDisplay = document.getElementById('sessionCounter');
+    const incrementBtn = document.getElementById('incrementBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const resetSessionBtn = document.getElementById('resetSessionBtn');
+
+    // Update session count on load
+    sessionDisplay.textContent = sessionCount;
+
+    // Increment dzikir count
+    incrementBtn.addEventListener('click', () => {
+      count++;
+      counterDisplay.textContent = count;
+    });
+
+    // Reset dzikir count and add to session count
+    resetBtn.addEventListener('click', () => {
+      count = 0;
+      counterDisplay.textContent = count;
+      sessionCount++;
+      sessionDisplay.textContent = sessionCount;
+      localStorage.setItem('sessionCount', sessionCount); // Save session count in local storage
+    });
+
+    // Reset session count
+    resetSessionBtn.addEventListener('click', () => {
+      sessionCount = 0;
+      sessionDisplay.textContent = sessionCount;
+      localStorage.removeItem('sessionCount'); // Clear session count from local storage
+    });
+  </script>
+</body>
+</html>

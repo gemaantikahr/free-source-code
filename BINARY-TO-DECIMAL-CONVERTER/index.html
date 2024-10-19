@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary to Decimal Converter</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script>
+        function convertBinaryToDecimal() {
+            const binaryInput = document.getElementById("binaryInput").value;
+            const errorMessage = document.getElementById("error");
+            const resultDisplay = document.getElementById("result");
+
+            // Validate input (check if it's a valid binary number)
+            if (/^[01]+$/.test(binaryInput)) {
+                const decimalValue = parseInt(binaryInput, 2); // Convert binary to decimal
+                resultDisplay.textContent = "Decimal: " + decimalValue;
+                errorMessage.textContent = ""; // Clear any previous errors
+            } else {
+                errorMessage.textContent = "Please enter a valid binary number (only 0s and 1s).";
+                resultDisplay.textContent = ""; // Clear the result if error
+            }
+        }
+    </script>
+</head>
+<body class="flex items-center justify-center h-screen bg-gray-900">
+    <div class="text-center">
+        <h1 class="text-white text-3xl mb-6">Binary to Decimal Converter</h1>
+        <input 
+            type="text" 
+            id="binaryInput" 
+            placeholder="Enter binary number" 
+            class="px-4 py-2 border border-gray-300 rounded-md mb-4 focus:outline-none focus:ring-2 focus:ring-green-500"
+        />
+        <br>
+        <button 
+            onclick="convertBinaryToDecimal()" 
+            class="px-6 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition"
+        >
+            Convert
+        </button>
+        <p id="error" class="text-red-500 mt-4"></p>
+        <p id="result" class="text-white mt-4"></p>
+    </div>
+</body>
+</html>

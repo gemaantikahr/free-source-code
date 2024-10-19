@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech Text Reader App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script>
+        function readText() {
+            const textInput = document.getElementById("textInput").value;
+            const speech = new SpeechSynthesisUtterance(textInput);
+            
+            // Check if text is available
+            if (textInput.trim() === "") {
+                alert("Please enter some text to read.");
+                return;
+            }
+
+            // Set voice and language options (optional)
+            speech.lang = 'en-US'; // You can change this to any supported language (e.g., 'fr-FR', 'es-ES')
+            
+            // Speak the text
+            window.speechSynthesis.speak(speech);
+        }
+    </script>
+</head>
+<body class="bg-gray-900 flex items-center justify-center h-screen">
+    <div class="text-center">
+        <h1 class="text-4xl text-white mb-6">Speech Text Reader</h1>
+        <textarea 
+            id="textInput" 
+            rows="5" 
+            placeholder="Enter text here..." 
+            class="w-full md:w-96 px-4 py-2 rounded-md text-gray-800 focus:outline-none focus:ring-2 focus:ring-green-500"
+        ></textarea>
+        <br>
+        <button 
+            onclick="readText()" 
+            class="mt-4 px-6 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition"
+        >
+            Read Text
+        </button>
+    </div>
+</body>
+</html>

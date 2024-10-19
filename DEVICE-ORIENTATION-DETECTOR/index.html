@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Device Orientation and Dimension Detector</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script>
+        function detectOrientation() {
+            const orientationDisplay = document.getElementById("orientation");
+            const dimensionsDisplay = document.getElementById("dimensions");
+
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+
+            // Detect orientation
+            if (height > width) {
+                orientationDisplay.textContent = "Portrait";
+            } else {
+                orientationDisplay.textContent = "Landscape";
+            }
+
+            // Display current dimensions
+            dimensionsDisplay.textContent = `Width: ${width}px, Height: ${height}px`;
+        }
+
+        // Listen for orientation and size changes
+        window.addEventListener("resize", detectOrientation);
+
+        // Detect initial orientation and dimensions on page load
+        window.addEventListener("DOMContentLoaded", detectOrientation);
+    </script>
+</head>
+<body class="flex items-center justify-center h-screen bg-gray-900">
+    <div class="text-center">
+        <h1 class="text-white text-4xl mb-6">Device Orientation & Dimension Detector</h1>
+        <p class="text-lg text-gray-300 mb-4">Current Orientation:</p>
+        <div id="orientation" class="text-green-500 text-3xl font-bold mb-4">Loading...</div>
+        <p class="text-lg text-gray-300 mb-4">Current Dimensions:</p>
+        <div id="dimensions" class="text-blue-400 text-2xl font-bold">Loading...</div>
+    </div>
+</body>
+</html>

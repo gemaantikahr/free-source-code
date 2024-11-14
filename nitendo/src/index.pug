@@ -1,0 +1,111 @@
+mixin link()
+    div(class!=attributes.class)
+        div(class!=attributes.class+'__front face')
+        div(class!=attributes.class+'__back face')
+        div(class!=attributes.class+'__right face')
+        div(class!=attributes.class+'__left face')
+        div(class!=attributes.class+'__top face')
+        div(class!=attributes.class+'__bottom face')
+//- =========================
+div.main#h
+    div.shadows-wrapper
+        div.shadow.sh01
+        div.shadow.sh02
+    div.shadows
+    //- 
+    div.a
+        div.a__front.face 
+            div.curve.c01
+                div.curve.c02
+                    div.curve.c03
+                        div.curve.c04
+                            div.curve.c05
+        div.a__back.face 
+            div.curve.c01
+                div.curve.c02
+                    div.curve.c03
+                        div.curve.c04
+                            div.curve.c05
+        div.a__right.face 
+        div.a__left.face 
+        div.a__top.face 
+        div.a__bottom.face
+    //- 
+    div.at
+        div.at__front.face
+        div.at__back.face 
+            div.curve.c01
+                div.curve.c02
+                    div.curve.c03
+                        div.curve.c04
+                            div.curve.c05
+        div.at__right.face 
+        div.at__top.face 
+        div.at__bottom.face
+    //- ================================
+    div.b
+        div.b__front.face 
+            div.curve.c01
+                div.curve.c02
+                    div.curve.c03
+                        div.curve.c04
+                            div.curve.c05
+        div.b__back.face 
+            div.curve.c01
+                div.curve.c02
+                    div.curve.c03
+                        div.curve.c04
+                            div.curve.c05
+        div.b__right.face 
+        div.b__left.face 
+        div.b__top.face 
+        div.b__bottom.face
+    //- 
+    div.bt
+        div.bt__front.face
+        div.bt__back.face 
+            div.curve.c01
+                div.curve.c02
+                    div.curve.c03
+                        div.curve.c04
+                            div.curve.c05
+        div.bt__left.face 
+        div.bt__top.face 
+        div.bt__bottom.face
+    //- ===========================
+    .buttons 
+        div.btn-b01.btn
+            div.circle.flex
+                div.circle-a
+                    - var n = 0
+                    while n < 20
+                        div.circle-a__side
+                        - n++
+                    div.circle-a__bottom
+        div.btn-b02.btn
+            div.circle.flex
+                div.circle-a
+                    - var n = 0
+                    while n < 20
+                        div.circle-a__side
+                        - n++
+                    div.circle-a__bottom
+        //- ===========================
+        - var m = 1
+        while m < 10
+            div(class=`btn-0${m} btn`)
+                div.circle.flex
+                    div.circle-a
+                        - var n = 0
+                        while n < 14
+                            div.circle-a__side
+                            - n++
+                        div.circle-a__bottom
+            - m++
+    //- ============================
+    +link(class="c")
+    .screen
+        +link(class="sa")
+        +link(class="sb")
+        +link(class="sc")
+        +link(class="sd")

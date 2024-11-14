@@ -1,0 +1,969 @@
+@use "sass:math";
+
+$unit: 4vmin;
+//
+$bg-01: #aed4c3;
+$bg-02: #7da49b;
+$bg-03: #376957;
+
+$blue-01: #4bb3bf;
+$blue-02: #46b0bd;
+$blue-03: #3ea5b4;
+$blue-04: #3b9bad;
+$blue-05: #3c99ab;
+$blue-06: #3291a4;
+
+$red-01: #dca39f;
+$red-02: #d08d8b;
+$red-03: #ce8785;
+$red-04: #c98280;
+$red-05: #ae6f6d;
+$red-06: #b36d6b;
+
+$black-01: #817980;
+$black-02: #434c49;
+$black-03: #0e1b21;
+
+/***********************/
+@mixin cylinder($base, $sides, $degree, $pi, $width, $color) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	position: absolute;
+
+    &__side{
+        position: absolute;
+        height: ( 2 * $pi * ($base / 2) ) / $sides ;
+        width: $width;
+
+        @for $var from 1 to ($sides + 1) {
+            &:nth-of-type(#{$var}){ transform: rotateX( $var * $degree / $sides ) translateZ($base / 2); }
+        }
+       
+        &::after{
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(to left, rgba($red-01, .2), transparent 90%); 
+        }
+    }
+
+    &__bottom{ 
+        position: absolute;
+        width: $base;
+        height: $base;
+        border-radius: 50%;
+        transform: rotateY(90deg) translateZ( $width / -2 );
+        background-image: linear-gradient(-45deg, rgba($red-01, .25), rgba($red-01, .1) );
+        border-left: .05 * $unit solid rgba(white, .1);
+    }
+}
+
+@mixin cube($width, $height, $depth) {
+    &__front{ @include cube-front($width, $height, $depth); }
+    &__back{ @include cube-back($width, $height, $depth); }
+    &__right{ @include cube-right($width, $height, $depth); }
+    &__left{ @include cube-left($width, $height, $depth); }
+    &__top{ @include cube-top($width, $height, $depth);}
+    &__bottom{ @include cube-bottom($width, $height, $depth); }
+}
+//----------------------
+@mixin cube-front($width, $height, $depth) {
+    width: $width;
+    height: $height;
+    transform-origin: bottom left;
+    transform: rotateX(-90deg) translateZ( -($height - ($depth * 2) ) );
+}
+@mixin cube-back($width, $height, $depth) {
+    width: $width;
+    height: $height;
+    transform-origin: top left;
+    transform: rotateX(-90deg) rotateY(180deg) translateX(-$width) translateY(-$height) ;
+}
+@mixin cube-right($width, $height, $depth) {
+    width: $depth * 2;
+    height: $height;
+    transform-origin: top left;
+    transform: rotateY(90deg) rotateZ(-90deg) translateZ($width) translateX(-$depth * 2) translateY(-$height);
+}
+@mixin cube-left($width, $height, $depth) {
+    width: $depth * 2;
+    height: $height;
+    transform-origin: top left;
+    transform: rotateY(-90deg) rotateZ(90deg) translateY(-$height);
+}
+@mixin cube-top($width, $height, $depth) {
+    width: $width;
+    height: $depth * 2;
+    transform-origin: top left;
+    transform: translateZ($height) ;
+}
+@mixin cube-bottom($width, $height, $depth) {
+    width: $width;
+    height: $depth * 2;
+    transform-origin: top left;
+    transform: rotateY(180deg) translateX(-$width);
+}
+
+/***********************/
+/***********************/
+*, *::after, *::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+    transform-style: preserve-3d;
+
+	user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    appearance: none;
+}
+/***********************/
+/***********************/
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+
+    overflow: hidden;
+	cursor: pointer;
+    background-color: $bg-01;
+
+}
+.face{ position: absolute; }
+.flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/***********************/
+/***********************/
+.main{
+    position: absolute;
+    width: 24 * $unit;
+    height: 10 * $unit;
+    transform:
+        perspective(500 * $unit)
+        rotateX(66deg)
+        rotateZ(30deg)
+        translateZ(-2 * $unit)
+    ;
+    transition: transform 550ms ease-out;
+}
+
+.shadows,
+.shadows-wrapper{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 2.4 * $unit;
+    transform: translateZ(-.01 * $unit);
+}
+
+.shadows{
+    box-shadow: 
+        0 0 .15 * $unit darken($bg-03, 15),
+        0 0 .25 * $unit darken($bg-03, 5),
+        0 0 .75 * $unit rgba($bg-03, .75),
+        0 0 2 * $unit rgba(lighten($bg-03, 10), .75)
+    ;
+    background-color: $bg-02;
+}
+
+.shadow{
+    position: absolute;
+    
+    &.sh01{
+        right: -2 * $unit;
+        bottom: -.05 * $unit;
+        width: 4 * $unit;
+        height: 11.2 * $unit;
+        background-image: linear-gradient(to top, $bg-02, lighten($bg-02, 6));
+
+        transform-origin: bottom left;
+        transform: skewY(-20deg);
+
+        border-top-right-radius: 2 * $unit;
+        border-bottom-right-radius: 2.3 * $unit;
+    }
+    &.sh02{
+        left: 0;
+        bottom: 80%;
+        width: 25.25 * $unit;
+        height: 4 * $unit;
+        background-image: 
+            linear-gradient(to right, transparent, lighten($bg-02, 5)),
+            linear-gradient(to top, lighten($bg-02, 5), lighten($bg-02, 10)),
+        ;
+
+        transform: skewX(-20deg);
+        transform-origin: bottom left;
+
+        border-top-right-radius: 2.3 * $unit;
+        border-top-left-radius: 2.3 * $unit;
+    }
+}
+// ==========================
+.a{
+    $width-el: 4 * $unit;
+    $height-el: 1.2 * $unit;
+    $depth-el: 5 * $unit;
+
+    @include cube($width-el, $height-el, $depth-el);
+    width: $width-el;
+    height: $depth-el * 2;
+    position: absolute;
+    left: 0;
+ 
+    &__front{ 
+        width: 2 * $unit;
+        right: 0;
+
+        background-image: 
+            linear-gradient(to top, rgba($bg-01, .2), transparent 85%, rgba($red-01, .95)),
+            linear-gradient(to top, darken($red-05, 20), transparent 12%),
+            linear-gradient(to left, $red-06, $red-05),
+        ;
+
+        .curve{
+            height: 100%;
+            width: .75 * $unit;
+            background-color: $red-01;
+            position: absolute;
+            right: 100%;
+            top: 0;
+            transform: rotateY(-18deg);
+            transform-origin: bottom right;
+        }
+
+        .c01{ 
+            background-image: 
+                linear-gradient(to top, rgba($bg-01, .2), transparent 85%, rgba($red-01, .95)),
+                linear-gradient(to top, darken($red-05, 18), transparent 12%),
+                linear-gradient(to left, $red-05, $red-04)
+            ; 
+        }
+        .c02{ 
+            background-image: 
+                linear-gradient(to top, rgba($bg-01, .2), transparent 85%, rgba($red-01, .95)),
+                linear-gradient(to top, darken($red-05, 16), transparent 12%),
+                linear-gradient(to left, $red-04, $red-03)
+            ; 
+        
+        }
+        .c03{ 
+            background-image: 
+                linear-gradient(to top, rgba($bg-01, .2), transparent 85%, rgba($red-01, .95)),
+                linear-gradient(to top, darken($red-05, 14), transparent 12%),
+                linear-gradient(to left, $red-03, $red-02)
+            ; 
+        }
+        .c04{ 
+            background-image: 
+                linear-gradient(to top, rgba($bg-01, .2), transparent 85%, rgba($red-01, .95)),
+                linear-gradient(to top, darken($red-05, 12), transparent 12%),
+                linear-gradient(to left, $red-02, $red-01)
+            ; 
+        }
+        .c05{ 
+            background-image: 
+                linear-gradient(to top, rgba($bg-01, .2), transparent 85%, rgba($red-01, .95)),
+                linear-gradient(to top, darken($red-05, 10), transparent 12%),
+                linear-gradient(to left, $red-01, $red-01)
+            ; 
+        }
+    }
+    &__back{ 
+        background-color: $red-05; 
+        width: 2 * $unit;
+
+        background-image: 
+            linear-gradient(to top, rgba($bg-01, .2), transparent 85%, rgba($red-01, .95)),
+            linear-gradient(to top, darken($red-05, 10), transparent 15%),
+            linear-gradient(to right, $red-05, $red-05)
+        ; 
+
+        .curve{
+            height: 100%;
+            width: .75 * $unit;
+            background-color: $red-01;
+            position: absolute;
+            left: 100%;
+            top: 0;
+            transform: rotateY(18deg);
+            transform-origin: bottom left;
+        }
+
+        .c01{ 
+            background-image: 
+                linear-gradient(to top, rgba($bg-01, .2), transparent 85%, rgba($red-01, .95)),
+                linear-gradient(to top, darken($red-05, 18), transparent 12%),
+                linear-gradient(to right, $red-05, $red-04)
+            ; 
+        }
+        .c02{ 
+            background-image: 
+                linear-gradient(to top, rgba($bg-01, .2), transparent 85%, rgba($red-01, .95)),
+                linear-gradient(to top, darken($red-05, 16), transparent 12%),
+                linear-gradient(to right, $red-04, $red-03)
+            ; 
+        }
+        .c03{ 
+            background-image: 
+                linear-gradient(to top, rgba($bg-01, .2), transparent 85%, rgba($red-01, .95)),
+                linear-gradient(to top, darken($red-05, 14), transparent 12%),
+                linear-gradient(to right, $red-03, $red-02)
+            ; 
+        }
+        .c04{ 
+            background-image: 
+                linear-gradient(to top, rgba($bg-01, .2), transparent 85%, rgba($red-01, .95)),
+                linear-gradient(to top, darken($red-05, 12), transparent 12%),
+                linear-gradient(to right, $red-02, $red-01)
+            ; 
+        }
+        .c05{ 
+            background-image: 
+                linear-gradient(to top, rgba($bg-01, .2), transparent 85%, rgba($red-01, .95)),
+                linear-gradient(to top, darken($red-05, 10), transparent 12%),
+                linear-gradient(to right, $red-01, $red-01)
+            ; 
+        }
+    }
+    &__left{ 
+        background-image: 
+            linear-gradient(to top, rgba($bg-01, .2), transparent 85%, rgba($red-01, .95)),
+            linear-gradient(to top, darken($red-05, 10), transparent 12%),
+            linear-gradient(to left, $red-01, $red-01)
+        ; 
+        width: 4.75 * $unit;
+        // top: calc(50% - (4.75 * $unit / 2));
+        top: calc(50% - 9.5vmin); // Solo para CodePen
+    }
+    &__right{ background-color: $black-03; }
+    &__top{ 
+        background-color: $red-01; 
+        background-image: linear-gradient(to top,darken($red-01, 6), darken($red-01, 3) 5%, transparent 20% 70%, lighten($red-01, 2));
+        border-top-left-radius: 2.3 * $unit;
+        border-bottom-left-radius: 2.3 * $unit;
+    }
+    &__bottom{ 
+        background-color: $red-05; 
+        border-top-right-radius: 2.3 * $unit;
+        border-bottom-right-radius: 2.3 * $unit;
+    }
+}
+
+.at{
+    $width-el: 3.5 * $unit;
+    $height-el: .75 * $unit;
+    $depth-el: 1 * $unit;
+
+    @include cube($width-el, $height-el, $depth-el);
+    width: $width-el;
+    height: $depth-el * 2;
+    position: absolute;
+    left: -.075 * $unit;
+    top: -.2 * $unit;
+
+    transform: translateZ(.25 * $unit);
+
+    &__front{ background-color: darken($black-02, 10); }
+
+    &__back{ 
+        background-color: darken($black-02, 20); 
+        width: 1.85 * $unit;
+
+        .curve{
+            position: absolute;
+            height: .75 * $unit;
+            width: .6 * $unit;
+            left: 98%;
+            top: 0;
+
+            transform: rotateY(17deg);
+            transform-origin: bottom left;
+        }
+
+        .c01{ background-image: linear-gradient(to right, darken($black-02, 20), darken($black-02, 18)); }
+        .c02{ background-image: linear-gradient(to right, darken($black-02, 18), darken($black-02, 16)); }
+        .c03{ background-image: linear-gradient(to right, darken($black-02, 16), darken($black-02, 14)); }
+        .c04{ background-image: linear-gradient(to right, darken($black-02, 14), darken($black-02, 12)); }
+        .c05{ background-image: linear-gradient(to right, darken($black-02, 12), darken($black-02, 10)); }
+    }
+
+    &__top{ 
+        background-color: darken($black-02, 20);
+        border-top-left-radius: 2 * $unit;
+    }
+    &__bottom{ 
+        background-color: darken($black-02, 20);
+        border-top-right-radius: 2 * $unit;
+    }
+    &__right{ background-color: darken($black-02, 20); }
+}
+
+.bt{
+    $width-el: 3.5 * $unit;
+    $height-el: .75 * $unit;
+    $depth-el: 1 * $unit;
+
+    @include cube($width-el, $height-el, $depth-el);
+    width: $width-el;
+    height: $depth-el * 2;
+    position: absolute;
+    right: -.075 * $unit;
+    top: -.2 * $unit;
+
+    transform: translateZ(.25 * $unit);
+
+    &__front{ background-color: darken($black-02, 10); }
+
+    &__back{ 
+        background-color: darken($black-02, 20);
+        width: 1.85 * $unit;
+        left: -46%;
+
+        .curve{
+            position: absolute;
+            top: 0;
+            right: 98%;
+            height: .75 * $unit;
+            width: .6 * $unit;
+
+            transform: rotateY(-17deg);
+            transform-origin: bottom right;
+        } 
+
+        .c01{ background-image: linear-gradient(to right, darken($black-02, 18), darken($black-02, 20)); }
+        .c02{ background-image: linear-gradient(to right, darken($black-02, 16), darken($black-02, 18)); }
+        .c03{ background-image: linear-gradient(to right, darken($black-02, 14), darken($black-02, 16)); }
+        .c04{ background-image: linear-gradient(to right, darken($black-02, 12), darken($black-02, 14)); }
+        .c05{ background-image: linear-gradient(to right, darken($black-02, 10), darken($black-02, 12)); }
+     
+    }
+    &__top{ 
+        background-color: darken($black-02, 20);
+        border-top-right-radius: 2 * $unit;
+    }
+    &__bottom{ 
+        background-color: darken($black-02, 20);
+        border-top-left-radius: 2 * $unit;
+    }
+    &__left{  background-color: darken($black-02, 20); }
+}
+
+
+.b{
+    $width-el: 4 * $unit;
+    $height-el: 1.2 * $unit;
+    $depth-el: 5 * $unit;
+
+    @include cube($width-el, $height-el, $depth-el);
+    width: $width-el;
+    height: $depth-el * 2;
+    position: absolute;
+    right: 0;
+ 
+     &__front{ 
+        width: 2 * $unit;
+        left: 0;
+
+        background-image: 
+            linear-gradient(to top, rgba($bg-01, .2), transparent 85%, rgba(lighten($blue-01, 10), .95)),
+            linear-gradient(to top, darken($blue-06, 10), transparent 12%),
+            linear-gradient(to right, $blue-01, $blue-02),
+        ;
+
+        .curve{
+            height: 100%;
+            width: .75 * $unit;
+            position: absolute;
+            left: 100%;
+            top: 0;
+            transform: rotateY(18deg);
+            transform-origin: bottom left;
+        }
+
+        .c01{ 
+            background-image: 
+                linear-gradient(to top, rgba($bg-01, .2), transparent 85%, rgba(lighten($blue-01, 10), .95)),
+                linear-gradient(to top, darken($blue-06, 16), transparent 12%),
+                linear-gradient(to right, $blue-01, $blue-02)
+            ; 
+        }
+        .c02{ 
+            background-image: 
+                linear-gradient(to top, rgba($bg-01, .2), transparent 85%, rgba(lighten($blue-01, 10), .95)),
+                linear-gradient(to top, darken($blue-06, 15), transparent 12%),
+                linear-gradient(to right, $blue-02, $blue-03)
+            ; 
+        }
+        .c03{ 
+            background-image: 
+                linear-gradient(to top, rgba($bg-01, .2), transparent 85%, rgba(lighten($blue-01, 10), .95)),
+                linear-gradient(to top, darken($blue-06, 14), transparent 12%),
+                linear-gradient(to right, $blue-03, $blue-04)
+            ; 
+        }
+        .c04{ 
+            background-image: 
+                linear-gradient(to top, rgba($bg-01, .2), transparent 85%, rgba(lighten($blue-01, 10), .95)),
+                linear-gradient(to top, darken($blue-06, 13), transparent 12%),
+                linear-gradient(to right, $blue-04, $blue-05)
+            ; 
+        }
+        .c05{ 
+            background-image: 
+                linear-gradient(to top, rgba($bg-01, .2), transparent 85%, rgba(lighten($blue-01, 10), .95)),
+                linear-gradient(to top, darken($blue-06, 12), transparent 12%),
+                linear-gradient(to right, $blue-05, $blue-06)
+            ; 
+        }
+    }
+    &__back{ 
+        width: 2 * $unit;
+        left: -50%;
+
+        background-image: 
+            linear-gradient(to top, rgba($bg-01, .2), transparent 85%, rgba(lighten($blue-01, 10), .95)),
+            linear-gradient(to top, darken($blue-06, 16), transparent 12%),
+            linear-gradient(to left, $blue-06, $blue-05)
+        ; 
+
+        .curve{
+            height: 100%;
+            width: .75 * $unit;
+            background-color: $red-01;
+            position: absolute;
+            right: 100%;
+            top: 0;
+            transform: rotateY(-18deg);
+            transform-origin: bottom right;
+        }
+        .c01{ 
+            background-image: 
+                linear-gradient(to top, rgba($bg-01, .2), transparent 85%, rgba(lighten($blue-01, 10), .95)),
+                linear-gradient(to top, darken($blue-06, 16), transparent 12%),
+                linear-gradient(to left, $blue-05, $blue-05)
+            ; 
+        }
+        .c02{ 
+            background-image: 
+                linear-gradient(to top, rgba($bg-01, .2), transparent 85%, rgba(lighten($blue-01, 10), .95)),
+                linear-gradient(to top, darken($blue-06, 15), transparent 12%),
+                linear-gradient(to left, $blue-05, $blue-04)
+            ; 
+        }
+        .c03{ 
+            background-image: 
+                linear-gradient(to top, rgba($bg-01, .2), transparent 85%, rgba(lighten($blue-01, 10), .95)),
+                linear-gradient(to top, darken($blue-06,14), transparent 12%),
+                linear-gradient(to left, $blue-04, $blue-04)
+            ; 
+        }
+        .c04{ 
+            background-image: 
+                linear-gradient(to top, rgba($bg-01, .2), transparent 85%, rgba(lighten($blue-01, 10), .95)),
+                linear-gradient(to top, darken($blue-06, 13), transparent 12%),
+                linear-gradient(to left, $blue-05, $blue-04)
+            ; 
+        }
+        .c05{ 
+            background-image: 
+                linear-gradient(to top, rgba($bg-01, .2), transparent 85%, rgba(lighten($blue-01, 10), .95)),
+                linear-gradient(to top, darken($blue-06, 12), transparent 12%),
+                linear-gradient(to right, $blue-06, $blue-05)
+            ; 
+        }
+    }
+    &__left{ 
+        background-color: $black-03;
+    }
+    &__right{ 
+        width: 4.75 * $unit;
+        // top: calc(-50% + (4.75 * $unit) / 2);
+        top: calc(-50% + 9.5vmin); // Solo para Codepen
+        background-image: 
+            linear-gradient(to top, rgba($bg-01, .2), transparent 85%, rgba(lighten($blue-01, 10), .95)),
+            linear-gradient(to top, darken($blue-06, 12), transparent 12%),
+            linear-gradient(to right, $blue-06, $blue-06)
+        ; 
+    }
+    &__top{ 
+        background-color: $blue-01; 
+        background-image: 
+            linear-gradient(to top, rgba($red-01, .25),  rgba($red-01, .3) 80%, lighten(rgba($blue-01, .1), 10)), 
+            linear-gradient(to top, darken($blue-01, 6), darken($blue-01, 3) 5%, transparent 20% 70%, lighten($blue-01, 5))
+        ;
+
+        border-top-right-radius: 2.3 * $unit;
+        border-bottom-right-radius: 2.3 * $unit;
+    }
+    &__bottom{ 
+        background-color: $blue-06; 
+        border-top-left-radius: 2.3 * $unit;
+        border-bottom-left-radius: 2.3 * $unit;
+    }
+}
+
+.c{
+    $width-el: 15.9 * $unit;
+    $height-el: 1.2 * $unit;
+    $depth-el: 5 * $unit;
+
+    @include cube($width-el, $height-el, $depth-el);
+    width: $width-el;
+    height: $depth-el * 2;
+    position: absolute;
+    left: 4.05 * $unit;
+
+    &__front{ 
+        background-color: $black-02;
+
+        background-image: 
+            linear-gradient(to top, rgba($black-03, .6), transparent ),
+            linear-gradient(to top, rgba($black-03, .75), transparent 15%),
+            linear-gradient(to top, rgba($bg-01, .5), $black-02 85%, rgba($black-01, .95))
+        ;
+
+        &::after{
+            content: '';
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            height: 40%;
+            width: 1 * $unit;
+            transform: translateX(-50%);
+            background-color: $black-03;
+            border-radius: 1 * $unit;
+        }
+        &::before{
+            content: '';
+            position: absolute;
+            top: 30%;
+            left: 41%;
+           
+            height: .5 * $unit;
+            width: .5 * $unit;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            background-color: $black-03;
+
+            box-shadow: 2.9 * $unit 0 0 0 $black-03;
+        }
+    }
+    &__back{ 
+        background-color: $black-02; 
+        background-image: 
+            radial-gradient(circle, darken($black-03, 5) .15 * $unit, transparent .15 * $unit),
+            linear-gradient(to top, rgba($black-03, .6), transparent ),
+            linear-gradient(to top, rgba($black-03, .75), transparent 15%),
+            linear-gradient(to top, rgba($bg-01, .5), $black-02 85%, rgba($black-01, .95))
+        ;
+        
+        &::after{
+            content: '';
+            position: absolute;
+            top: 25%;
+            left: 2 * $unit;
+            height: 50%;
+            width: 4.75 * $unit;
+
+            border-radius: 1 * $unit;
+            background-image: repeating-linear-gradient(to right, darken($black-03, 5) 0 .8 * $unit, transparent .8 * $unit 1 * $unit);
+            
+        }
+    }
+    &__left{ background-color: $black-03;}
+    &__right{ background-color: $black-03; }
+    &__top{ 
+        background-color: $black-01; 
+        background-image: linear-gradient(rgba($red-01, .1), rgba($red-01, .1));
+    }
+    &__bottom{ background-color: $bg-03; }
+}
+// =============
+.btn{
+    &::before{
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 110%;
+        height: 110%;
+
+        border-radius: 50%;
+        transform: skewX(-20deg);
+        transform-origin: bottom left;
+    }
+    &::after{
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 110%;
+        height: 110%;
+
+        border-radius: 50%;
+        transform: skewY(20deg);
+        transform-origin: top left;
+    }
+}
+
+.btn-b01,
+.btn-b02{
+    position: absolute;
+    width: 1.8 * $unit;
+    height: 1.8 * $unit;
+    
+    transform: translateZ(1.2 * $unit);
+    background-color: $black-03;
+    border-radius: 50%;
+    box-shadow: 0 0 .5 * $unit rgba($black-03, .5);
+
+    .circle{
+        $sides: 20;
+        $degree: 360deg;
+        $width: .4 * $unit;
+    
+        width: 1.8 * $unit;
+        height: 1.8 * $unit;
+        position: absolute;
+
+        &-a{
+            $base: 1.8 * $unit;
+            $pi: 3.5;
+            position: absolute;
+            width: $width;
+            height: $base;
+            transform: rotateY(90deg) translateX(-50%);
+    
+            @include cylinder($base, $sides, $degree, $pi, $width, $black-02);
+
+            &__bottom{ background-color: $black-02; }
+
+            &__side{
+                &:nth-of-type(1){ background-image: linear-gradient(to top, darken($black-02, 25), darken($black-02, 25)) }
+                &:nth-of-type(2){ background-image: linear-gradient(to top, darken($black-02, 25), darken($black-02, 25)) }
+                &:nth-of-type(3){ background-image: linear-gradient(to top, darken($black-02, 25), darken($black-02, 20)) }
+                &:nth-of-type(4){ background-image: linear-gradient(to top, darken($black-02, 20), darken($black-02, 20)) }
+                &:nth-of-type(5){ background-image: linear-gradient(to top, darken($black-02, 20), darken($black-02, 20)) }
+                &:nth-of-type(6){ background-image: linear-gradient(to top, darken($black-02, 20), darken($black-02, 14)) }
+                &:nth-of-type(7){ background-image: linear-gradient(to top, darken($black-02, 14), darken($black-02, 14)) }
+                &:nth-of-type(8){ background-image: linear-gradient(to top, darken($black-02, 14), darken($black-02, 14)) }
+                &:nth-of-type(9){ background-image: linear-gradient(to top, darken($black-02, 14), darken($black-02, 10)) }
+                &:nth-of-type(10){ background-image: linear-gradient(to top, darken($black-02, 10), darken($black-02, 10)) }
+                &:nth-of-type(11){ background-image: linear-gradient(to top, darken($black-02, 10), darken($black-02, 4)) }
+                &:nth-of-type(12){ background-image: linear-gradient(to top, darken($black-02, 4), darken($black-02, 0)) }
+
+                &:nth-of-type(13){ background-image: linear-gradient(to top, darken($black-02, 0), darken($black-02, 0)) }
+                &:nth-of-type(14){ background-image: linear-gradient(to top, darken($black-02, 0), darken($black-02, 4)) }
+                &:nth-of-type(15){ background-image: linear-gradient(to top, darken($black-02, 4), darken($black-02, 14)) }
+                &:nth-of-type(16){ background-image: linear-gradient(to top, darken($black-02, 14), darken($black-02, 20)) }
+                &:nth-of-type(17){ background-image: linear-gradient(to top, darken($black-02, 20), darken($black-02, 25)) }
+                &:nth-of-type(18){ background-image: linear-gradient(to top, darken($black-02, 25), darken($black-02, 25)) }
+                &:nth-of-type(19){ background-image: linear-gradient(to top, darken($black-02, 25), darken($black-02, 25)) }
+                &:nth-of-type(20){ background-image: linear-gradient(to top, darken($black-02, 25), darken($black-02, 25)) }
+            }
+        }
+    }
+}
+.btn-b01{
+    top: 1.5 * $unit;
+    left: 1.1 * $unit;
+}
+
+.btn-b02{
+    top: 4.9 * $unit;
+    right: 1.1 * $unit;
+}
+
+.btn-01,
+.btn-02,
+.btn-03,
+.btn-04,
+.btn-05,
+.btn-06,
+.btn-07,
+.btn-09,
+.btn-08{
+    position: absolute;
+    width: .9 * $unit;
+    height: .9 * $unit;
+    
+    background-color: $black-03;
+    border-radius: 50%;
+    transform: translateZ(1.2 * $unit);
+    box-shadow: 0 0 .25 * $unit rgba($black-03, .5);
+
+    .circle{
+        $sides: 14;
+        $degree: 360deg;
+        $width: .175 * $unit;
+    
+        width: .9 * $unit;
+        height: .9 * $unit;
+        position: absolute;
+
+        &-a{
+            $base: .9 * $unit;
+            $pi: 3.5;
+            position: absolute;
+            width: $width;
+            height: $base;
+            transform: rotateY(90deg) translateX(-50%);
+    
+            @include cylinder($base, $sides, $degree, $pi, $width, $black-02);
+
+            &__bottom{ background-color: $black-02; }
+
+            &__side{
+                &:nth-of-type(1){ background-image: linear-gradient(to top, darken($black-02, 24), darken($black-02, 24)) }
+                &:nth-of-type(2){ background-image: linear-gradient(to top, darken($black-02, 24), darken($black-02, 20)) }
+                &:nth-of-type(3){ background-image: linear-gradient(to top, darken($black-02, 20), darken($black-02, 16)) }
+                &:nth-of-type(4){ background-image: linear-gradient(to top, darken($black-02, 16), darken($black-02, 12)) }
+                &:nth-of-type(5){ background-image: linear-gradient(to top, darken($black-02, 12), darken($black-02, 8)) }
+                &:nth-of-type(6){ background-image: linear-gradient(to top, darken($black-02, 8), darken($black-02, 4)) }
+                &:nth-of-type(7){ background-image: linear-gradient(to top, darken($black-02, 4), darken($black-02, 0)) }
+        
+                &:nth-of-type(8){ background-image: linear-gradient(to top, darken($black-02, 0), darken($black-02, 0)) }
+                &:nth-of-type(9){ background-image: linear-gradient(to top, darken($black-02, 0), darken($black-02, 0)) }
+                &:nth-of-type(10){ background-image: linear-gradient(to top, darken($black-02, 0), darken($black-02, 16)) }
+                &:nth-of-type(11){ background-image: linear-gradient(to top, darken($black-02, 16), darken($black-02, 20)) }
+                &:nth-of-type(12){ background-image: linear-gradient(to top, darken($black-02, 20), darken($black-02, 24)) }
+                &:nth-of-type(13){ background-image: linear-gradient(to top, darken($black-02, 20), darken($black-02, 24)) }
+                &:nth-of-type(14){ background-image: linear-gradient(to top, darken($black-02, 20), darken($black-02, 24)) }
+            }
+        }
+    }
+}
+
+.btn-01{ top: 4.5 * $unit; left: 1.5 * $unit; }
+.btn-02{ top: 6.25 * $unit; left: 1.5 * $unit; }
+.btn-03{ top: 5.375 * $unit; left: .6 * $unit; }
+.btn-04{ top: 5.375 * $unit; left: 2.4 * $unit; }
+// ===============
+.btn-05{ top: 1.5 * $unit; right: 1.5 * $unit; }
+.btn-06{ top: 3.25 * $unit; right: 1.5 * $unit; }
+.btn-07{ top: 2.375 * $unit; right: 2.4 * $unit; }
+.btn-08{ top: 2.375 * $unit; right: .6 * $unit; }
+.btn-09{ top: 7.5 * $unit; right: 2.1 * $unit; }
+
+.btn-b01,
+.btn-01,
+.btn-02,
+.btn-03,
+.btn-04{
+    &::before{
+        background-image: 
+            linear-gradient( rgba($red-01, .1), rgba($red-01, .1)),
+            linear-gradient(20deg, darken(rgba($red-06, .5), 10), rgba($red-04, .5) 70%, transparent)
+        ;
+    }
+    &::after{
+        background-image: 
+            linear-gradient(20deg, rgba($red-06, .25), transparent)
+        ;
+    }
+}
+
+.btn-b02,
+.btn-05,
+.btn-06,
+.btn-07,
+.btn-08,
+.btn-09{
+    &::before{
+        background-image: 
+            linear-gradient( rgba($blue-03, .2), rgba($blue-01, .1)),
+            linear-gradient(20deg, darken(rgba($blue-06, .75), 20), rgba($blue-03, .85) 70%, transparent)
+        ;
+    }
+    &::after{
+        background-image: 
+            linear-gradient(20deg, rgba($blue-06, .25), transparent)
+        ;
+    }
+}
+// ================================
+.screen{
+    position: absolute;
+    width: 15 * $unit;
+    height: 9 * $unit;
+    top: .5 * $unit;
+    left: 4.5 * $unit;
+    transform: translateZ(1.2 * $unit);
+    
+    background-color: darken($black-01, 2);
+    background-image: 
+        radial-gradient(circle,  $black-02, transparent 60%, darken($black-02, 3)),
+        linear-gradient( -35deg, darken($black-02, 5), darken($black-01, 15) )
+    ;
+}
+
+.sa,
+.sb{
+    $width-el: 1 * $unit;
+    $height-el: .1 * $unit;
+    $depth-el: 4.5 * $unit;
+
+    @include cube($width-el, $height-el, $depth-el);
+    width: $width-el;
+    height: $depth-el * 2;
+    position: absolute;
+}
+
+.sa{
+    left: 0 * $unit;
+    bottom: 0 * $unit;
+
+    &__front{ background-color: lighten($black-03, 6)}
+    &__back{ background-color: $black-02; }
+    &__left{ background-color: $black-02;}
+    &__right{ background-color: lighten($black-03, 6); }
+    &__top{ background-color: darken($black-01, 5); }
+    &__bottom{ background-color: $bg-03; }
+}
+.sb{
+    right: 0 * $unit;
+    bottom: 0 * $unit;
+
+    &__front{ background-color: lighten($black-03, 6)}
+    &__back{ background-color: $black-02; }
+    &__left{ background-color: lighten($black-03, 6);}
+    &__right{ background-color: $black-03; }
+    &__top{ background-color: darken($black-01, 5); }
+    &__bottom{ background-color: $bg-03; }
+}
+.sc,
+.sd{
+    $width-el: 13 * $unit;
+    $height-el: .1 * $unit;
+    $depth-el: .35 * $unit;
+
+    @include cube($width-el, $height-el, $depth-el);
+    width: $width-el;
+    height: $depth-el * 2;
+    position: absolute;
+}
+.sc{
+    left: 1 * $unit;
+    top: 0 * $unit;
+
+    &__front{ background-color: lighten($black-03, 6);}
+    &__back{ background-color: $black-02; }
+    &__top{ background-color: darken($black-01, 5); }
+    &__bottom{ background-color: $bg-03; }
+}
+.sd{
+    left: 1 * $unit;
+    bottom: 0 * $unit;
+
+    &__front{ background-color: lighten($black-03, 6)}
+    &__back{ background-color: lighten($black-03, 6); }
+    &__top{ background-color: darken($black-01, 5); }
+    &__bottom{ background-color: $bg-03; }
+}

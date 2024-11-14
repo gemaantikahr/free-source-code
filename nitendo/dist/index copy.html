@@ -1,0 +1,1929 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>3D Nintendo Switch - CSS Art</title>
+  <link rel="stylesheet" href="./style.css">
+
+  <style>
+    /***********************/
+/***********************/
+/***********************/
+*, *::after, *::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transform-style: preserve-3d;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  appearance: none;
+}
+
+/***********************/
+/***********************/
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: #aed4c3;
+}
+
+.face {
+  position: absolute;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/***********************/
+/***********************/
+.main {
+  position: absolute;
+  width: 96vmin;
+  height: 40vmin;
+  transform: perspective(2000vmin) rotateX(66deg) rotateZ(30deg) translateZ(-8vmin);
+  transition: transform 550ms ease-out;
+}
+
+.shadows,
+.shadows-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: 9.6vmin;
+  transform: translateZ(-0.04vmin);
+}
+
+.shadows {
+  box-shadow: 0 0 0.6vmin #1d372d, 0 0 1vmin #2e5849, 0 0 3vmin rgba(55, 105, 87, 0.75), 0 0 8vmin rgba(73, 138, 115, 0.75);
+  background-color: #7da49b;
+}
+
+.shadow {
+  position: absolute;
+}
+.shadow.sh01 {
+  right: -8vmin;
+  bottom: -0.2vmin;
+  width: 16vmin;
+  height: 44.8vmin;
+  background-image: linear-gradient(to top, #7da49b, #8fb1a9);
+  transform-origin: bottom left;
+  transform: skewY(-20deg);
+  border-top-right-radius: 8vmin;
+  border-bottom-right-radius: 9.2vmin;
+}
+.shadow.sh02 {
+  left: 0;
+  bottom: 80%;
+  width: 101vmin;
+  height: 16vmin;
+  background-image: linear-gradient(to right, transparent, #8cafa7), linear-gradient(to top, #8cafa7, #9bb9b2);
+  transform: skewX(-20deg);
+  transform-origin: bottom left;
+  border-top-right-radius: 9.2vmin;
+  border-top-left-radius: 9.2vmin;
+}
+
+.a {
+  width: 16vmin;
+  height: 40vmin;
+  position: absolute;
+  left: 0;
+}
+.a__front {
+  width: 16vmin;
+  height: 4.8vmin;
+  transform-origin: bottom left;
+  transform: rotateX(-90deg) translateZ(35.2vmin);
+}
+.a__back {
+  width: 16vmin;
+  height: 4.8vmin;
+  transform-origin: top left;
+  transform: rotateX(-90deg) rotateY(180deg) translateX(-16vmin) translateY(-4.8vmin);
+}
+.a__right {
+  width: 40vmin;
+  height: 4.8vmin;
+  transform-origin: top left;
+  transform: rotateY(90deg) rotateZ(-90deg) translateZ(16vmin) translateX(-40vmin) translateY(-4.8vmin);
+}
+.a__left {
+  width: 40vmin;
+  height: 4.8vmin;
+  transform-origin: top left;
+  transform: rotateY(-90deg) rotateZ(90deg) translateY(-4.8vmin);
+}
+.a__top {
+  width: 16vmin;
+  height: 40vmin;
+  transform-origin: top left;
+  transform: translateZ(4.8vmin);
+}
+.a__bottom {
+  width: 16vmin;
+  height: 40vmin;
+  transform-origin: top left;
+  transform: rotateY(180deg) translateX(-16vmin);
+}
+.a__front {
+  width: 8vmin;
+  right: 0;
+  background-image: linear-gradient(to top, rgba(174, 212, 195, 0.2), transparent 85%, rgba(220, 163, 159, 0.95)), linear-gradient(to top, #744241, transparent 12%), linear-gradient(to left, #b36d6b, #ae6f6d);
+}
+.a__front .curve {
+  height: 100%;
+  width: 3vmin;
+  background-color: #dca39f;
+  position: absolute;
+  right: 100%;
+  top: 0;
+  transform: rotateY(-18deg);
+  transform-origin: bottom right;
+}
+.a__front .c01 {
+  background-image: linear-gradient(to top, rgba(174, 212, 195, 0.2), transparent 85%, rgba(220, 163, 159, 0.95)), linear-gradient(to top, #7b4644, transparent 12%), linear-gradient(to left, #ae6f6d, #c98280);
+}
+.a__front .c02 {
+  background-image: linear-gradient(to top, rgba(174, 212, 195, 0.2), transparent 85%, rgba(220, 163, 159, 0.95)), linear-gradient(to top, #824a48, transparent 12%), linear-gradient(to left, #c98280, #ce8785);
+}
+.a__front .c03 {
+  background-image: linear-gradient(to top, rgba(174, 212, 195, 0.2), transparent 85%, rgba(220, 163, 159, 0.95)), linear-gradient(to top, #884d4c, transparent 12%), linear-gradient(to left, #ce8785, #d08d8b);
+}
+.a__front .c04 {
+  background-image: linear-gradient(to top, rgba(174, 212, 195, 0.2), transparent 85%, rgba(220, 163, 159, 0.95)), linear-gradient(to top, #8f514f, transparent 12%), linear-gradient(to left, #d08d8b, #dca39f);
+}
+.a__front .c05 {
+  background-image: linear-gradient(to top, rgba(174, 212, 195, 0.2), transparent 85%, rgba(220, 163, 159, 0.95)), linear-gradient(to top, #955553, transparent 12%), linear-gradient(to left, #dca39f, #dca39f);
+}
+.a__back {
+  background-color: #ae6f6d;
+  width: 8vmin;
+  background-image: linear-gradient(to top, rgba(174, 212, 195, 0.2), transparent 85%, rgba(220, 163, 159, 0.95)), linear-gradient(to top, #955553, transparent 15%), linear-gradient(to right, #ae6f6d, #ae6f6d);
+}
+.a__back .curve {
+  height: 100%;
+  width: 3vmin;
+  background-color: #dca39f;
+  position: absolute;
+  left: 100%;
+  top: 0;
+  transform: rotateY(18deg);
+  transform-origin: bottom left;
+}
+.a__back .c01 {
+  background-image: linear-gradient(to top, rgba(174, 212, 195, 0.2), transparent 85%, rgba(220, 163, 159, 0.95)), linear-gradient(to top, #7b4644, transparent 12%), linear-gradient(to right, #ae6f6d, #c98280);
+}
+.a__back .c02 {
+  background-image: linear-gradient(to top, rgba(174, 212, 195, 0.2), transparent 85%, rgba(220, 163, 159, 0.95)), linear-gradient(to top, #824a48, transparent 12%), linear-gradient(to right, #c98280, #ce8785);
+}
+.a__back .c03 {
+  background-image: linear-gradient(to top, rgba(174, 212, 195, 0.2), transparent 85%, rgba(220, 163, 159, 0.95)), linear-gradient(to top, #884d4c, transparent 12%), linear-gradient(to right, #ce8785, #d08d8b);
+}
+.a__back .c04 {
+  background-image: linear-gradient(to top, rgba(174, 212, 195, 0.2), transparent 85%, rgba(220, 163, 159, 0.95)), linear-gradient(to top, #8f514f, transparent 12%), linear-gradient(to right, #d08d8b, #dca39f);
+}
+.a__back .c05 {
+  background-image: linear-gradient(to top, rgba(174, 212, 195, 0.2), transparent 85%, rgba(220, 163, 159, 0.95)), linear-gradient(to top, #955553, transparent 12%), linear-gradient(to right, #dca39f, #dca39f);
+}
+.a__left {
+  background-image: linear-gradient(to top, rgba(174, 212, 195, 0.2), transparent 85%, rgba(220, 163, 159, 0.95)), linear-gradient(to top, #955553, transparent 12%), linear-gradient(to left, #dca39f, #dca39f);
+  width: 19vmin;
+  top: calc(50% - 9.5vmin);
+}
+.a__right {
+  background-color: #0e1b21;
+}
+.a__top {
+  background-color: #dca39f;
+  background-image: linear-gradient(to top, #d48e89, #d89894 5%, transparent 20% 70%, #dfaaa6);
+  border-top-left-radius: 9.2vmin;
+  border-bottom-left-radius: 9.2vmin;
+}
+.a__bottom {
+  background-color: #ae6f6d;
+  border-top-right-radius: 9.2vmin;
+  border-bottom-right-radius: 9.2vmin;
+}
+
+.at {
+  width: 14vmin;
+  height: 8vmin;
+  position: absolute;
+  left: -0.3vmin;
+  top: -0.8vmin;
+  transform: translateZ(1vmin);
+}
+.at__front {
+  width: 14vmin;
+  height: 3vmin;
+  transform-origin: bottom left;
+  transform: rotateX(-90deg) translateZ(5vmin);
+}
+.at__back {
+  width: 14vmin;
+  height: 3vmin;
+  transform-origin: top left;
+  transform: rotateX(-90deg) rotateY(180deg) translateX(-14vmin) translateY(-3vmin);
+}
+.at__right {
+  width: 8vmin;
+  height: 3vmin;
+  transform-origin: top left;
+  transform: rotateY(90deg) rotateZ(-90deg) translateZ(14vmin) translateX(-8vmin) translateY(-3vmin);
+}
+.at__left {
+  width: 8vmin;
+  height: 3vmin;
+  transform-origin: top left;
+  transform: rotateY(-90deg) rotateZ(90deg) translateY(-3vmin);
+}
+.at__top {
+  width: 14vmin;
+  height: 8vmin;
+  transform-origin: top left;
+  transform: translateZ(3vmin);
+}
+.at__bottom {
+  width: 14vmin;
+  height: 8vmin;
+  transform-origin: top left;
+  transform: rotateY(180deg) translateX(-14vmin);
+}
+.at__front {
+  background-color: #2b312f;
+}
+.at__back {
+  background-color: #131615;
+  width: 7.4vmin;
+}
+.at__back .curve {
+  position: absolute;
+  height: 3vmin;
+  width: 2.4vmin;
+  left: 98%;
+  top: 0;
+  transform: rotateY(17deg);
+  transform-origin: bottom left;
+}
+.at__back .c01 {
+  background-image: linear-gradient(to right, #131615, #181b1a);
+}
+.at__back .c02 {
+  background-image: linear-gradient(to right, #181b1a, #1d211f);
+}
+.at__back .c03 {
+  background-image: linear-gradient(to right, #1d211f, #222625);
+}
+.at__back .c04 {
+  background-image: linear-gradient(to right, #222625, #262b2a);
+}
+.at__back .c05 {
+  background-image: linear-gradient(to right, #262b2a, #2b312f);
+}
+.at__top {
+  background-color: #131615;
+  border-top-left-radius: 8vmin;
+}
+.at__bottom {
+  background-color: #131615;
+  border-top-right-radius: 8vmin;
+}
+.at__right {
+  background-color: #131615;
+}
+
+.bt {
+  width: 14vmin;
+  height: 8vmin;
+  position: absolute;
+  right: -0.3vmin;
+  top: -0.8vmin;
+  transform: translateZ(1vmin);
+}
+.bt__front {
+  width: 14vmin;
+  height: 3vmin;
+  transform-origin: bottom left;
+  transform: rotateX(-90deg) translateZ(5vmin);
+}
+.bt__back {
+  width: 14vmin;
+  height: 3vmin;
+  transform-origin: top left;
+  transform: rotateX(-90deg) rotateY(180deg) translateX(-14vmin) translateY(-3vmin);
+}
+.bt__right {
+  width: 8vmin;
+  height: 3vmin;
+  transform-origin: top left;
+  transform: rotateY(90deg) rotateZ(-90deg) translateZ(14vmin) translateX(-8vmin) translateY(-3vmin);
+}
+.bt__left {
+  width: 8vmin;
+  height: 3vmin;
+  transform-origin: top left;
+  transform: rotateY(-90deg) rotateZ(90deg) translateY(-3vmin);
+}
+.bt__top {
+  width: 14vmin;
+  height: 8vmin;
+  transform-origin: top left;
+  transform: translateZ(3vmin);
+}
+.bt__bottom {
+  width: 14vmin;
+  height: 8vmin;
+  transform-origin: top left;
+  transform: rotateY(180deg) translateX(-14vmin);
+}
+.bt__front {
+  background-color: #2b312f;
+}
+.bt__back {
+  background-color: #131615;
+  width: 7.4vmin;
+  left: -46%;
+}
+.bt__back .curve {
+  position: absolute;
+  top: 0;
+  right: 98%;
+  height: 3vmin;
+  width: 2.4vmin;
+  transform: rotateY(-17deg);
+  transform-origin: bottom right;
+}
+.bt__back .c01 {
+  background-image: linear-gradient(to right, #181b1a, #131615);
+}
+.bt__back .c02 {
+  background-image: linear-gradient(to right, #1d211f, #181b1a);
+}
+.bt__back .c03 {
+  background-image: linear-gradient(to right, #222625, #1d211f);
+}
+.bt__back .c04 {
+  background-image: linear-gradient(to right, #262b2a, #222625);
+}
+.bt__back .c05 {
+  background-image: linear-gradient(to right, #2b312f, #262b2a);
+}
+.bt__top {
+  background-color: #131615;
+  border-top-right-radius: 8vmin;
+}
+.bt__bottom {
+  background-color: #131615;
+  border-top-left-radius: 8vmin;
+}
+.bt__left {
+  background-color: #131615;
+}
+
+.b {
+  width: 16vmin;
+  height: 40vmin;
+  position: absolute;
+  right: 0;
+}
+.b__front {
+  width: 16vmin;
+  height: 4.8vmin;
+  transform-origin: bottom left;
+  transform: rotateX(-90deg) translateZ(35.2vmin);
+}
+.b__back {
+  width: 16vmin;
+  height: 4.8vmin;
+  transform-origin: top left;
+  transform: rotateX(-90deg) rotateY(180deg) translateX(-16vmin) translateY(-4.8vmin);
+}
+.b__right {
+  width: 40vmin;
+  height: 4.8vmin;
+  transform-origin: top left;
+  transform: rotateY(90deg) rotateZ(-90deg) translateZ(16vmin) translateX(-40vmin) translateY(-4.8vmin);
+}
+.b__left {
+  width: 40vmin;
+  height: 4.8vmin;
+  transform-origin: top left;
+  transform: rotateY(-90deg) rotateZ(90deg) translateY(-4.8vmin);
+}
+.b__top {
+  width: 16vmin;
+  height: 40vmin;
+  transform-origin: top left;
+  transform: translateZ(4.8vmin);
+}
+.b__bottom {
+  width: 16vmin;
+  height: 40vmin;
+  transform-origin: top left;
+  transform: rotateY(180deg) translateX(-16vmin);
+}
+.b__front {
+  width: 8vmin;
+  left: 0;
+  background-image: linear-gradient(to top, rgba(174, 212, 195, 0.2), transparent 85%, rgba(113, 195, 204, 0.95)), linear-gradient(to top, #266e7d, transparent 12%), linear-gradient(to right, #4bb3bf, #46b0bd);
+}
+.b__front .curve {
+  height: 100%;
+  width: 3vmin;
+  position: absolute;
+  left: 100%;
+  top: 0;
+  transform: rotateY(18deg);
+  transform-origin: bottom left;
+}
+.b__front .c01 {
+  background-image: linear-gradient(to top, rgba(174, 212, 195, 0.2), transparent 85%, rgba(113, 195, 204, 0.95)), linear-gradient(to top, #1f5a65, transparent 12%), linear-gradient(to right, #4bb3bf, #46b0bd);
+}
+.b__front .c02 {
+  background-image: linear-gradient(to top, rgba(174, 212, 195, 0.2), transparent 85%, rgba(113, 195, 204, 0.95)), linear-gradient(to top, #205d69, transparent 12%), linear-gradient(to right, #46b0bd, #3ea5b4);
+}
+.b__front .c03 {
+  background-image: linear-gradient(to top, rgba(174, 212, 195, 0.2), transparent 85%, rgba(113, 195, 204, 0.95)), linear-gradient(to top, #21616d, transparent 12%), linear-gradient(to right, #3ea5b4, #3b9bad);
+}
+.b__front .c04 {
+  background-image: linear-gradient(to top, rgba(174, 212, 195, 0.2), transparent 85%, rgba(113, 195, 204, 0.95)), linear-gradient(to top, #236471, transparent 12%), linear-gradient(to right, #3b9bad, #3c99ab);
+}
+.b__front .c05 {
+  background-image: linear-gradient(to top, rgba(174, 212, 195, 0.2), transparent 85%, rgba(113, 195, 204, 0.95)), linear-gradient(to top, #246875, transparent 12%), linear-gradient(to right, #3c99ab, #3291a4);
+}
+.b__back {
+  width: 8vmin;
+  left: -50%;
+  background-image: linear-gradient(to top, rgba(174, 212, 195, 0.2), transparent 85%, rgba(113, 195, 204, 0.95)), linear-gradient(to top, #1f5a65, transparent 12%), linear-gradient(to left, #3291a4, #3c99ab);
+}
+.b__back .curve {
+  height: 100%;
+  width: 3vmin;
+  background-color: #dca39f;
+  position: absolute;
+  right: 100%;
+  top: 0;
+  transform: rotateY(-18deg);
+  transform-origin: bottom right;
+}
+.b__back .c01 {
+  background-image: linear-gradient(to top, rgba(174, 212, 195, 0.2), transparent 85%, rgba(113, 195, 204, 0.95)), linear-gradient(to top, #1f5a65, transparent 12%), linear-gradient(to left, #3c99ab, #3c99ab);
+}
+.b__back .c02 {
+  background-image: linear-gradient(to top, rgba(174, 212, 195, 0.2), transparent 85%, rgba(113, 195, 204, 0.95)), linear-gradient(to top, #205d69, transparent 12%), linear-gradient(to left, #3c99ab, #3b9bad);
+}
+.b__back .c03 {
+  background-image: linear-gradient(to top, rgba(174, 212, 195, 0.2), transparent 85%, rgba(113, 195, 204, 0.95)), linear-gradient(to top, #21616d, transparent 12%), linear-gradient(to left, #3b9bad, #3b9bad);
+}
+.b__back .c04 {
+  background-image: linear-gradient(to top, rgba(174, 212, 195, 0.2), transparent 85%, rgba(113, 195, 204, 0.95)), linear-gradient(to top, #236471, transparent 12%), linear-gradient(to left, #3c99ab, #3b9bad);
+}
+.b__back .c05 {
+  background-image: linear-gradient(to top, rgba(174, 212, 195, 0.2), transparent 85%, rgba(113, 195, 204, 0.95)), linear-gradient(to top, #246875, transparent 12%), linear-gradient(to right, #3291a4, #3c99ab);
+}
+.b__left {
+  background-color: #0e1b21;
+}
+.b__right {
+  width: 19vmin;
+  top: calc(-50% + 9.5vmin);
+  background-image: linear-gradient(to top, rgba(174, 212, 195, 0.2), transparent 85%, rgba(113, 195, 204, 0.95)), linear-gradient(to top, #246875, transparent 12%), linear-gradient(to right, #3291a4, #3291a4);
+}
+.b__top {
+  background-color: #4bb3bf;
+  background-image: linear-gradient(to top, rgba(220, 163, 159, 0.25), rgba(220, 163, 159, 0.3) 80%, rgba(113, 195, 204, 0.1)), linear-gradient(to top, #3ea2ae, #42adb9 5%, transparent 20% 70%, #5ebbc6);
+  border-top-right-radius: 9.2vmin;
+  border-bottom-right-radius: 9.2vmin;
+}
+.b__bottom {
+  background-color: #3291a4;
+  border-top-left-radius: 9.2vmin;
+  border-bottom-left-radius: 9.2vmin;
+}
+
+.c {
+  width: 63.6vmin;
+  height: 40vmin;
+  position: absolute;
+  left: 16.2vmin;
+}
+.c__front {
+  width: 63.6vmin;
+  height: 4.8vmin;
+  transform-origin: bottom left;
+  transform: rotateX(-90deg) translateZ(35.2vmin);
+}
+.c__back {
+  width: 63.6vmin;
+  height: 4.8vmin;
+  transform-origin: top left;
+  transform: rotateX(-90deg) rotateY(180deg) translateX(-63.6vmin) translateY(-4.8vmin);
+}
+.c__right {
+  width: 40vmin;
+  height: 4.8vmin;
+  transform-origin: top left;
+  transform: rotateY(90deg) rotateZ(-90deg) translateZ(63.6vmin) translateX(-40vmin) translateY(-4.8vmin);
+}
+.c__left {
+  width: 40vmin;
+  height: 4.8vmin;
+  transform-origin: top left;
+  transform: rotateY(-90deg) rotateZ(90deg) translateY(-4.8vmin);
+}
+.c__top {
+  width: 63.6vmin;
+  height: 40vmin;
+  transform-origin: top left;
+  transform: translateZ(4.8vmin);
+}
+.c__bottom {
+  width: 63.6vmin;
+  height: 40vmin;
+  transform-origin: top left;
+  transform: rotateY(180deg) translateX(-63.6vmin);
+}
+.c__front {
+  background-color: #434c49;
+  background-image: linear-gradient(to top, rgba(14, 27, 33, 0.6), transparent), linear-gradient(to top, rgba(14, 27, 33, 0.75), transparent 15%), linear-gradient(to top, rgba(174, 212, 195, 0.5), #434c49 85%, rgba(129, 121, 128, 0.95));
+}
+.c__front::after {
+  content: "";
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  height: 40%;
+  width: 4vmin;
+  transform: translateX(-50%);
+  background-color: #0e1b21;
+  border-radius: 4vmin;
+}
+.c__front::before {
+  content: "";
+  position: absolute;
+  top: 30%;
+  left: 41%;
+  height: 2vmin;
+  width: 2vmin;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  background-color: #0e1b21;
+  box-shadow: 11.6vmin 0 0 0 #0e1b21;
+}
+.c__back {
+  background-color: #434c49;
+  background-image: radial-gradient(circle, #060c0f 0.6vmin, transparent 0.6vmin), linear-gradient(to top, rgba(14, 27, 33, 0.6), transparent), linear-gradient(to top, rgba(14, 27, 33, 0.75), transparent 15%), linear-gradient(to top, rgba(174, 212, 195, 0.5), #434c49 85%, rgba(129, 121, 128, 0.95));
+}
+.c__back::after {
+  content: "";
+  position: absolute;
+  top: 25%;
+  left: 8vmin;
+  height: 50%;
+  width: 19vmin;
+  border-radius: 4vmin;
+  background-image: repeating-linear-gradient(to right, #060c0f 0 3.2vmin, transparent 3.2vmin 4vmin);
+}
+.c__left {
+  background-color: #0e1b21;
+}
+.c__right {
+  background-color: #0e1b21;
+}
+.c__top {
+  background-color: #817980;
+  background-image: linear-gradient(rgba(220, 163, 159, 0.1), rgba(220, 163, 159, 0.1));
+}
+.c__bottom {
+  background-color: #376957;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 110%;
+  height: 110%;
+  border-radius: 50%;
+  transform: skewX(-20deg);
+  transform-origin: bottom left;
+}
+.btn::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 110%;
+  height: 110%;
+  border-radius: 50%;
+  transform: skewY(20deg);
+  transform-origin: top left;
+}
+
+.btn-b01,
+.btn-b02 {
+  position: absolute;
+  width: 7.2vmin;
+  height: 7.2vmin;
+  transform: translateZ(4.8vmin);
+  background-color: #0e1b21;
+  border-radius: 50%;
+  box-shadow: 0 0 2vmin rgba(14, 27, 33, 0.5);
+}
+.btn-b01 .circle,
+.btn-b02 .circle {
+  width: 7.2vmin;
+  height: 7.2vmin;
+  position: absolute;
+}
+.btn-b01 .circle-a,
+.btn-b02 .circle-a {
+  position: absolute;
+  width: 1.6vmin;
+  height: 7.2vmin;
+  transform: rotateY(90deg) translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+}
+.btn-b01 .circle-a__side,
+.btn-b02 .circle-a__side {
+  position: absolute;
+  height: 1.26vmin;
+  width: 1.6vmin;
+}
+.btn-b01 .circle-a__side:nth-of-type(1),
+.btn-b02 .circle-a__side:nth-of-type(1) {
+  transform: rotateX(18deg) translateZ(3.6vmin);
+}
+.btn-b01 .circle-a__side:nth-of-type(2),
+.btn-b02 .circle-a__side:nth-of-type(2) {
+  transform: rotateX(36deg) translateZ(3.6vmin);
+}
+.btn-b01 .circle-a__side:nth-of-type(3),
+.btn-b02 .circle-a__side:nth-of-type(3) {
+  transform: rotateX(54deg) translateZ(3.6vmin);
+}
+.btn-b01 .circle-a__side:nth-of-type(4),
+.btn-b02 .circle-a__side:nth-of-type(4) {
+  transform: rotateX(72deg) translateZ(3.6vmin);
+}
+.btn-b01 .circle-a__side:nth-of-type(5),
+.btn-b02 .circle-a__side:nth-of-type(5) {
+  transform: rotateX(90deg) translateZ(3.6vmin);
+}
+.btn-b01 .circle-a__side:nth-of-type(6),
+.btn-b02 .circle-a__side:nth-of-type(6) {
+  transform: rotateX(108deg) translateZ(3.6vmin);
+}
+.btn-b01 .circle-a__side:nth-of-type(7),
+.btn-b02 .circle-a__side:nth-of-type(7) {
+  transform: rotateX(126deg) translateZ(3.6vmin);
+}
+.btn-b01 .circle-a__side:nth-of-type(8),
+.btn-b02 .circle-a__side:nth-of-type(8) {
+  transform: rotateX(144deg) translateZ(3.6vmin);
+}
+.btn-b01 .circle-a__side:nth-of-type(9),
+.btn-b02 .circle-a__side:nth-of-type(9) {
+  transform: rotateX(162deg) translateZ(3.6vmin);
+}
+.btn-b01 .circle-a__side:nth-of-type(10),
+.btn-b02 .circle-a__side:nth-of-type(10) {
+  transform: rotateX(180deg) translateZ(3.6vmin);
+}
+.btn-b01 .circle-a__side:nth-of-type(11),
+.btn-b02 .circle-a__side:nth-of-type(11) {
+  transform: rotateX(198deg) translateZ(3.6vmin);
+}
+.btn-b01 .circle-a__side:nth-of-type(12),
+.btn-b02 .circle-a__side:nth-of-type(12) {
+  transform: rotateX(216deg) translateZ(3.6vmin);
+}
+.btn-b01 .circle-a__side:nth-of-type(13),
+.btn-b02 .circle-a__side:nth-of-type(13) {
+  transform: rotateX(234deg) translateZ(3.6vmin);
+}
+.btn-b01 .circle-a__side:nth-of-type(14),
+.btn-b02 .circle-a__side:nth-of-type(14) {
+  transform: rotateX(252deg) translateZ(3.6vmin);
+}
+.btn-b01 .circle-a__side:nth-of-type(15),
+.btn-b02 .circle-a__side:nth-of-type(15) {
+  transform: rotateX(270deg) translateZ(3.6vmin);
+}
+.btn-b01 .circle-a__side:nth-of-type(16),
+.btn-b02 .circle-a__side:nth-of-type(16) {
+  transform: rotateX(288deg) translateZ(3.6vmin);
+}
+.btn-b01 .circle-a__side:nth-of-type(17),
+.btn-b02 .circle-a__side:nth-of-type(17) {
+  transform: rotateX(306deg) translateZ(3.6vmin);
+}
+.btn-b01 .circle-a__side:nth-of-type(18),
+.btn-b02 .circle-a__side:nth-of-type(18) {
+  transform: rotateX(324deg) translateZ(3.6vmin);
+}
+.btn-b01 .circle-a__side:nth-of-type(19),
+.btn-b02 .circle-a__side:nth-of-type(19) {
+  transform: rotateX(342deg) translateZ(3.6vmin);
+}
+.btn-b01 .circle-a__side:nth-of-type(20),
+.btn-b02 .circle-a__side:nth-of-type(20) {
+  transform: rotateX(360deg) translateZ(3.6vmin);
+}
+.btn-b01 .circle-a__side::after,
+.btn-b02 .circle-a__side::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to left, rgba(220, 163, 159, 0.2), transparent 90%);
+}
+.btn-b01 .circle-a__bottom,
+.btn-b02 .circle-a__bottom {
+  position: absolute;
+  width: 7.2vmin;
+  height: 7.2vmin;
+  border-radius: 50%;
+  transform: rotateY(90deg) translateZ(-0.8vmin);
+  background-image: linear-gradient(-45deg, rgba(220, 163, 159, 0.25), rgba(220, 163, 159, 0.1));
+  border-left: 0.2vmin solid rgba(255, 255, 255, 0.1);
+}
+.btn-b01 .circle-a__bottom,
+.btn-b02 .circle-a__bottom {
+  background-color: #434c49;
+}
+.btn-b01 .circle-a__side:nth-of-type(1),
+.btn-b02 .circle-a__side:nth-of-type(1) {
+  background-image: linear-gradient(to top, #070808, #070808);
+}
+.btn-b01 .circle-a__side:nth-of-type(2),
+.btn-b02 .circle-a__side:nth-of-type(2) {
+  background-image: linear-gradient(to top, #070808, #070808);
+}
+.btn-b01 .circle-a__side:nth-of-type(3),
+.btn-b02 .circle-a__side:nth-of-type(3) {
+  background-image: linear-gradient(to top, #070808, #131615);
+}
+.btn-b01 .circle-a__side:nth-of-type(4),
+.btn-b02 .circle-a__side:nth-of-type(4) {
+  background-image: linear-gradient(to top, #131615, #131615);
+}
+.btn-b01 .circle-a__side:nth-of-type(5),
+.btn-b02 .circle-a__side:nth-of-type(5) {
+  background-image: linear-gradient(to top, #131615, #131615);
+}
+.btn-b01 .circle-a__side:nth-of-type(6),
+.btn-b02 .circle-a__side:nth-of-type(6) {
+  background-image: linear-gradient(to top, #131615, #222625);
+}
+.btn-b01 .circle-a__side:nth-of-type(7),
+.btn-b02 .circle-a__side:nth-of-type(7) {
+  background-image: linear-gradient(to top, #222625, #222625);
+}
+.btn-b01 .circle-a__side:nth-of-type(8),
+.btn-b02 .circle-a__side:nth-of-type(8) {
+  background-image: linear-gradient(to top, #222625, #222625);
+}
+.btn-b01 .circle-a__side:nth-of-type(9),
+.btn-b02 .circle-a__side:nth-of-type(9) {
+  background-image: linear-gradient(to top, #222625, #2b312f);
+}
+.btn-b01 .circle-a__side:nth-of-type(10),
+.btn-b02 .circle-a__side:nth-of-type(10) {
+  background-image: linear-gradient(to top, #2b312f, #2b312f);
+}
+.btn-b01 .circle-a__side:nth-of-type(11),
+.btn-b02 .circle-a__side:nth-of-type(11) {
+  background-image: linear-gradient(to top, #2b312f, #39413f);
+}
+.btn-b01 .circle-a__side:nth-of-type(12),
+.btn-b02 .circle-a__side:nth-of-type(12) {
+  background-image: linear-gradient(to top, #39413f, #434c49);
+}
+.btn-b01 .circle-a__side:nth-of-type(13),
+.btn-b02 .circle-a__side:nth-of-type(13) {
+  background-image: linear-gradient(to top, #434c49, #434c49);
+}
+.btn-b01 .circle-a__side:nth-of-type(14),
+.btn-b02 .circle-a__side:nth-of-type(14) {
+  background-image: linear-gradient(to top, #434c49, #39413f);
+}
+.btn-b01 .circle-a__side:nth-of-type(15),
+.btn-b02 .circle-a__side:nth-of-type(15) {
+  background-image: linear-gradient(to top, #39413f, #222625);
+}
+.btn-b01 .circle-a__side:nth-of-type(16),
+.btn-b02 .circle-a__side:nth-of-type(16) {
+  background-image: linear-gradient(to top, #222625, #131615);
+}
+.btn-b01 .circle-a__side:nth-of-type(17),
+.btn-b02 .circle-a__side:nth-of-type(17) {
+  background-image: linear-gradient(to top, #131615, #070808);
+}
+.btn-b01 .circle-a__side:nth-of-type(18),
+.btn-b02 .circle-a__side:nth-of-type(18) {
+  background-image: linear-gradient(to top, #070808, #070808);
+}
+.btn-b01 .circle-a__side:nth-of-type(19),
+.btn-b02 .circle-a__side:nth-of-type(19) {
+  background-image: linear-gradient(to top, #070808, #070808);
+}
+.btn-b01 .circle-a__side:nth-of-type(20),
+.btn-b02 .circle-a__side:nth-of-type(20) {
+  background-image: linear-gradient(to top, #070808, #070808);
+}
+
+.btn-b01 {
+  top: 6vmin;
+  left: 4.4vmin;
+}
+
+.btn-b02 {
+  top: 19.6vmin;
+  right: 4.4vmin;
+}
+
+.btn-01,
+.btn-02,
+.btn-03,
+.btn-04,
+.btn-05,
+.btn-06,
+.btn-07,
+.btn-09,
+.btn-08 {
+  position: absolute;
+  width: 3.6vmin;
+  height: 3.6vmin;
+  background-color: #0e1b21;
+  border-radius: 50%;
+  transform: translateZ(4.8vmin);
+  box-shadow: 0 0 1vmin rgba(14, 27, 33, 0.5);
+}
+.btn-01 .circle,
+.btn-02 .circle,
+.btn-03 .circle,
+.btn-04 .circle,
+.btn-05 .circle,
+.btn-06 .circle,
+.btn-07 .circle,
+.btn-09 .circle,
+.btn-08 .circle {
+  width: 3.6vmin;
+  height: 3.6vmin;
+  position: absolute;
+}
+.btn-01 .circle-a,
+.btn-02 .circle-a,
+.btn-03 .circle-a,
+.btn-04 .circle-a,
+.btn-05 .circle-a,
+.btn-06 .circle-a,
+.btn-07 .circle-a,
+.btn-09 .circle-a,
+.btn-08 .circle-a {
+  position: absolute;
+  width: 0.7vmin;
+  height: 3.6vmin;
+  transform: rotateY(90deg) translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+}
+.btn-01 .circle-a__side,
+.btn-02 .circle-a__side,
+.btn-03 .circle-a__side,
+.btn-04 .circle-a__side,
+.btn-05 .circle-a__side,
+.btn-06 .circle-a__side,
+.btn-07 .circle-a__side,
+.btn-09 .circle-a__side,
+.btn-08 .circle-a__side {
+  position: absolute;
+  height: 0.9vmin;
+  width: 0.7vmin;
+}
+.btn-01 .circle-a__side:nth-of-type(1),
+.btn-02 .circle-a__side:nth-of-type(1),
+.btn-03 .circle-a__side:nth-of-type(1),
+.btn-04 .circle-a__side:nth-of-type(1),
+.btn-05 .circle-a__side:nth-of-type(1),
+.btn-06 .circle-a__side:nth-of-type(1),
+.btn-07 .circle-a__side:nth-of-type(1),
+.btn-09 .circle-a__side:nth-of-type(1),
+.btn-08 .circle-a__side:nth-of-type(1) {
+  transform: rotateX(25.7142857143deg) translateZ(1.8vmin);
+}
+.btn-01 .circle-a__side:nth-of-type(2),
+.btn-02 .circle-a__side:nth-of-type(2),
+.btn-03 .circle-a__side:nth-of-type(2),
+.btn-04 .circle-a__side:nth-of-type(2),
+.btn-05 .circle-a__side:nth-of-type(2),
+.btn-06 .circle-a__side:nth-of-type(2),
+.btn-07 .circle-a__side:nth-of-type(2),
+.btn-09 .circle-a__side:nth-of-type(2),
+.btn-08 .circle-a__side:nth-of-type(2) {
+  transform: rotateX(51.4285714286deg) translateZ(1.8vmin);
+}
+.btn-01 .circle-a__side:nth-of-type(3),
+.btn-02 .circle-a__side:nth-of-type(3),
+.btn-03 .circle-a__side:nth-of-type(3),
+.btn-04 .circle-a__side:nth-of-type(3),
+.btn-05 .circle-a__side:nth-of-type(3),
+.btn-06 .circle-a__side:nth-of-type(3),
+.btn-07 .circle-a__side:nth-of-type(3),
+.btn-09 .circle-a__side:nth-of-type(3),
+.btn-08 .circle-a__side:nth-of-type(3) {
+  transform: rotateX(77.1428571429deg) translateZ(1.8vmin);
+}
+.btn-01 .circle-a__side:nth-of-type(4),
+.btn-02 .circle-a__side:nth-of-type(4),
+.btn-03 .circle-a__side:nth-of-type(4),
+.btn-04 .circle-a__side:nth-of-type(4),
+.btn-05 .circle-a__side:nth-of-type(4),
+.btn-06 .circle-a__side:nth-of-type(4),
+.btn-07 .circle-a__side:nth-of-type(4),
+.btn-09 .circle-a__side:nth-of-type(4),
+.btn-08 .circle-a__side:nth-of-type(4) {
+  transform: rotateX(102.8571428571deg) translateZ(1.8vmin);
+}
+.btn-01 .circle-a__side:nth-of-type(5),
+.btn-02 .circle-a__side:nth-of-type(5),
+.btn-03 .circle-a__side:nth-of-type(5),
+.btn-04 .circle-a__side:nth-of-type(5),
+.btn-05 .circle-a__side:nth-of-type(5),
+.btn-06 .circle-a__side:nth-of-type(5),
+.btn-07 .circle-a__side:nth-of-type(5),
+.btn-09 .circle-a__side:nth-of-type(5),
+.btn-08 .circle-a__side:nth-of-type(5) {
+  transform: rotateX(128.5714285714deg) translateZ(1.8vmin);
+}
+.btn-01 .circle-a__side:nth-of-type(6),
+.btn-02 .circle-a__side:nth-of-type(6),
+.btn-03 .circle-a__side:nth-of-type(6),
+.btn-04 .circle-a__side:nth-of-type(6),
+.btn-05 .circle-a__side:nth-of-type(6),
+.btn-06 .circle-a__side:nth-of-type(6),
+.btn-07 .circle-a__side:nth-of-type(6),
+.btn-09 .circle-a__side:nth-of-type(6),
+.btn-08 .circle-a__side:nth-of-type(6) {
+  transform: rotateX(154.2857142857deg) translateZ(1.8vmin);
+}
+.btn-01 .circle-a__side:nth-of-type(7),
+.btn-02 .circle-a__side:nth-of-type(7),
+.btn-03 .circle-a__side:nth-of-type(7),
+.btn-04 .circle-a__side:nth-of-type(7),
+.btn-05 .circle-a__side:nth-of-type(7),
+.btn-06 .circle-a__side:nth-of-type(7),
+.btn-07 .circle-a__side:nth-of-type(7),
+.btn-09 .circle-a__side:nth-of-type(7),
+.btn-08 .circle-a__side:nth-of-type(7) {
+  transform: rotateX(180deg) translateZ(1.8vmin);
+}
+.btn-01 .circle-a__side:nth-of-type(8),
+.btn-02 .circle-a__side:nth-of-type(8),
+.btn-03 .circle-a__side:nth-of-type(8),
+.btn-04 .circle-a__side:nth-of-type(8),
+.btn-05 .circle-a__side:nth-of-type(8),
+.btn-06 .circle-a__side:nth-of-type(8),
+.btn-07 .circle-a__side:nth-of-type(8),
+.btn-09 .circle-a__side:nth-of-type(8),
+.btn-08 .circle-a__side:nth-of-type(8) {
+  transform: rotateX(205.7142857143deg) translateZ(1.8vmin);
+}
+.btn-01 .circle-a__side:nth-of-type(9),
+.btn-02 .circle-a__side:nth-of-type(9),
+.btn-03 .circle-a__side:nth-of-type(9),
+.btn-04 .circle-a__side:nth-of-type(9),
+.btn-05 .circle-a__side:nth-of-type(9),
+.btn-06 .circle-a__side:nth-of-type(9),
+.btn-07 .circle-a__side:nth-of-type(9),
+.btn-09 .circle-a__side:nth-of-type(9),
+.btn-08 .circle-a__side:nth-of-type(9) {
+  transform: rotateX(231.4285714286deg) translateZ(1.8vmin);
+}
+.btn-01 .circle-a__side:nth-of-type(10),
+.btn-02 .circle-a__side:nth-of-type(10),
+.btn-03 .circle-a__side:nth-of-type(10),
+.btn-04 .circle-a__side:nth-of-type(10),
+.btn-05 .circle-a__side:nth-of-type(10),
+.btn-06 .circle-a__side:nth-of-type(10),
+.btn-07 .circle-a__side:nth-of-type(10),
+.btn-09 .circle-a__side:nth-of-type(10),
+.btn-08 .circle-a__side:nth-of-type(10) {
+  transform: rotateX(257.1428571429deg) translateZ(1.8vmin);
+}
+.btn-01 .circle-a__side:nth-of-type(11),
+.btn-02 .circle-a__side:nth-of-type(11),
+.btn-03 .circle-a__side:nth-of-type(11),
+.btn-04 .circle-a__side:nth-of-type(11),
+.btn-05 .circle-a__side:nth-of-type(11),
+.btn-06 .circle-a__side:nth-of-type(11),
+.btn-07 .circle-a__side:nth-of-type(11),
+.btn-09 .circle-a__side:nth-of-type(11),
+.btn-08 .circle-a__side:nth-of-type(11) {
+  transform: rotateX(282.8571428571deg) translateZ(1.8vmin);
+}
+.btn-01 .circle-a__side:nth-of-type(12),
+.btn-02 .circle-a__side:nth-of-type(12),
+.btn-03 .circle-a__side:nth-of-type(12),
+.btn-04 .circle-a__side:nth-of-type(12),
+.btn-05 .circle-a__side:nth-of-type(12),
+.btn-06 .circle-a__side:nth-of-type(12),
+.btn-07 .circle-a__side:nth-of-type(12),
+.btn-09 .circle-a__side:nth-of-type(12),
+.btn-08 .circle-a__side:nth-of-type(12) {
+  transform: rotateX(308.5714285714deg) translateZ(1.8vmin);
+}
+.btn-01 .circle-a__side:nth-of-type(13),
+.btn-02 .circle-a__side:nth-of-type(13),
+.btn-03 .circle-a__side:nth-of-type(13),
+.btn-04 .circle-a__side:nth-of-type(13),
+.btn-05 .circle-a__side:nth-of-type(13),
+.btn-06 .circle-a__side:nth-of-type(13),
+.btn-07 .circle-a__side:nth-of-type(13),
+.btn-09 .circle-a__side:nth-of-type(13),
+.btn-08 .circle-a__side:nth-of-type(13) {
+  transform: rotateX(334.2857142857deg) translateZ(1.8vmin);
+}
+.btn-01 .circle-a__side:nth-of-type(14),
+.btn-02 .circle-a__side:nth-of-type(14),
+.btn-03 .circle-a__side:nth-of-type(14),
+.btn-04 .circle-a__side:nth-of-type(14),
+.btn-05 .circle-a__side:nth-of-type(14),
+.btn-06 .circle-a__side:nth-of-type(14),
+.btn-07 .circle-a__side:nth-of-type(14),
+.btn-09 .circle-a__side:nth-of-type(14),
+.btn-08 .circle-a__side:nth-of-type(14) {
+  transform: rotateX(360deg) translateZ(1.8vmin);
+}
+.btn-01 .circle-a__side::after,
+.btn-02 .circle-a__side::after,
+.btn-03 .circle-a__side::after,
+.btn-04 .circle-a__side::after,
+.btn-05 .circle-a__side::after,
+.btn-06 .circle-a__side::after,
+.btn-07 .circle-a__side::after,
+.btn-09 .circle-a__side::after,
+.btn-08 .circle-a__side::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to left, rgba(220, 163, 159, 0.2), transparent 90%);
+}
+.btn-01 .circle-a__bottom,
+.btn-02 .circle-a__bottom,
+.btn-03 .circle-a__bottom,
+.btn-04 .circle-a__bottom,
+.btn-05 .circle-a__bottom,
+.btn-06 .circle-a__bottom,
+.btn-07 .circle-a__bottom,
+.btn-09 .circle-a__bottom,
+.btn-08 .circle-a__bottom {
+  position: absolute;
+  width: 3.6vmin;
+  height: 3.6vmin;
+  border-radius: 50%;
+  transform: rotateY(90deg) translateZ(-0.35vmin);
+  background-image: linear-gradient(-45deg, rgba(220, 163, 159, 0.25), rgba(220, 163, 159, 0.1));
+  border-left: 0.2vmin solid rgba(255, 255, 255, 0.1);
+}
+.btn-01 .circle-a__bottom,
+.btn-02 .circle-a__bottom,
+.btn-03 .circle-a__bottom,
+.btn-04 .circle-a__bottom,
+.btn-05 .circle-a__bottom,
+.btn-06 .circle-a__bottom,
+.btn-07 .circle-a__bottom,
+.btn-09 .circle-a__bottom,
+.btn-08 .circle-a__bottom {
+  background-color: #434c49;
+}
+.btn-01 .circle-a__side:nth-of-type(1),
+.btn-02 .circle-a__side:nth-of-type(1),
+.btn-03 .circle-a__side:nth-of-type(1),
+.btn-04 .circle-a__side:nth-of-type(1),
+.btn-05 .circle-a__side:nth-of-type(1),
+.btn-06 .circle-a__side:nth-of-type(1),
+.btn-07 .circle-a__side:nth-of-type(1),
+.btn-09 .circle-a__side:nth-of-type(1),
+.btn-08 .circle-a__side:nth-of-type(1) {
+  background-image: linear-gradient(to top, #0a0b0b, #0a0b0b);
+}
+.btn-01 .circle-a__side:nth-of-type(2),
+.btn-02 .circle-a__side:nth-of-type(2),
+.btn-03 .circle-a__side:nth-of-type(2),
+.btn-04 .circle-a__side:nth-of-type(2),
+.btn-05 .circle-a__side:nth-of-type(2),
+.btn-06 .circle-a__side:nth-of-type(2),
+.btn-07 .circle-a__side:nth-of-type(2),
+.btn-09 .circle-a__side:nth-of-type(2),
+.btn-08 .circle-a__side:nth-of-type(2) {
+  background-image: linear-gradient(to top, #0a0b0b, #131615);
+}
+.btn-01 .circle-a__side:nth-of-type(3),
+.btn-02 .circle-a__side:nth-of-type(3),
+.btn-03 .circle-a__side:nth-of-type(3),
+.btn-04 .circle-a__side:nth-of-type(3),
+.btn-05 .circle-a__side:nth-of-type(3),
+.btn-06 .circle-a__side:nth-of-type(3),
+.btn-07 .circle-a__side:nth-of-type(3),
+.btn-09 .circle-a__side:nth-of-type(3),
+.btn-08 .circle-a__side:nth-of-type(3) {
+  background-image: linear-gradient(to top, #131615, #1d211f);
+}
+.btn-01 .circle-a__side:nth-of-type(4),
+.btn-02 .circle-a__side:nth-of-type(4),
+.btn-03 .circle-a__side:nth-of-type(4),
+.btn-04 .circle-a__side:nth-of-type(4),
+.btn-05 .circle-a__side:nth-of-type(4),
+.btn-06 .circle-a__side:nth-of-type(4),
+.btn-07 .circle-a__side:nth-of-type(4),
+.btn-09 .circle-a__side:nth-of-type(4),
+.btn-08 .circle-a__side:nth-of-type(4) {
+  background-image: linear-gradient(to top, #1d211f, #262b2a);
+}
+.btn-01 .circle-a__side:nth-of-type(5),
+.btn-02 .circle-a__side:nth-of-type(5),
+.btn-03 .circle-a__side:nth-of-type(5),
+.btn-04 .circle-a__side:nth-of-type(5),
+.btn-05 .circle-a__side:nth-of-type(5),
+.btn-06 .circle-a__side:nth-of-type(5),
+.btn-07 .circle-a__side:nth-of-type(5),
+.btn-09 .circle-a__side:nth-of-type(5),
+.btn-08 .circle-a__side:nth-of-type(5) {
+  background-image: linear-gradient(to top, #262b2a, #303634);
+}
+.btn-01 .circle-a__side:nth-of-type(6),
+.btn-02 .circle-a__side:nth-of-type(6),
+.btn-03 .circle-a__side:nth-of-type(6),
+.btn-04 .circle-a__side:nth-of-type(6),
+.btn-05 .circle-a__side:nth-of-type(6),
+.btn-06 .circle-a__side:nth-of-type(6),
+.btn-07 .circle-a__side:nth-of-type(6),
+.btn-09 .circle-a__side:nth-of-type(6),
+.btn-08 .circle-a__side:nth-of-type(6) {
+  background-image: linear-gradient(to top, #303634, #39413f);
+}
+.btn-01 .circle-a__side:nth-of-type(7),
+.btn-02 .circle-a__side:nth-of-type(7),
+.btn-03 .circle-a__side:nth-of-type(7),
+.btn-04 .circle-a__side:nth-of-type(7),
+.btn-05 .circle-a__side:nth-of-type(7),
+.btn-06 .circle-a__side:nth-of-type(7),
+.btn-07 .circle-a__side:nth-of-type(7),
+.btn-09 .circle-a__side:nth-of-type(7),
+.btn-08 .circle-a__side:nth-of-type(7) {
+  background-image: linear-gradient(to top, #39413f, #434c49);
+}
+.btn-01 .circle-a__side:nth-of-type(8),
+.btn-02 .circle-a__side:nth-of-type(8),
+.btn-03 .circle-a__side:nth-of-type(8),
+.btn-04 .circle-a__side:nth-of-type(8),
+.btn-05 .circle-a__side:nth-of-type(8),
+.btn-06 .circle-a__side:nth-of-type(8),
+.btn-07 .circle-a__side:nth-of-type(8),
+.btn-09 .circle-a__side:nth-of-type(8),
+.btn-08 .circle-a__side:nth-of-type(8) {
+  background-image: linear-gradient(to top, #434c49, #434c49);
+}
+.btn-01 .circle-a__side:nth-of-type(9),
+.btn-02 .circle-a__side:nth-of-type(9),
+.btn-03 .circle-a__side:nth-of-type(9),
+.btn-04 .circle-a__side:nth-of-type(9),
+.btn-05 .circle-a__side:nth-of-type(9),
+.btn-06 .circle-a__side:nth-of-type(9),
+.btn-07 .circle-a__side:nth-of-type(9),
+.btn-09 .circle-a__side:nth-of-type(9),
+.btn-08 .circle-a__side:nth-of-type(9) {
+  background-image: linear-gradient(to top, #434c49, #434c49);
+}
+.btn-01 .circle-a__side:nth-of-type(10),
+.btn-02 .circle-a__side:nth-of-type(10),
+.btn-03 .circle-a__side:nth-of-type(10),
+.btn-04 .circle-a__side:nth-of-type(10),
+.btn-05 .circle-a__side:nth-of-type(10),
+.btn-06 .circle-a__side:nth-of-type(10),
+.btn-07 .circle-a__side:nth-of-type(10),
+.btn-09 .circle-a__side:nth-of-type(10),
+.btn-08 .circle-a__side:nth-of-type(10) {
+  background-image: linear-gradient(to top, #434c49, #1d211f);
+}
+.btn-01 .circle-a__side:nth-of-type(11),
+.btn-02 .circle-a__side:nth-of-type(11),
+.btn-03 .circle-a__side:nth-of-type(11),
+.btn-04 .circle-a__side:nth-of-type(11),
+.btn-05 .circle-a__side:nth-of-type(11),
+.btn-06 .circle-a__side:nth-of-type(11),
+.btn-07 .circle-a__side:nth-of-type(11),
+.btn-09 .circle-a__side:nth-of-type(11),
+.btn-08 .circle-a__side:nth-of-type(11) {
+  background-image: linear-gradient(to top, #1d211f, #131615);
+}
+.btn-01 .circle-a__side:nth-of-type(12),
+.btn-02 .circle-a__side:nth-of-type(12),
+.btn-03 .circle-a__side:nth-of-type(12),
+.btn-04 .circle-a__side:nth-of-type(12),
+.btn-05 .circle-a__side:nth-of-type(12),
+.btn-06 .circle-a__side:nth-of-type(12),
+.btn-07 .circle-a__side:nth-of-type(12),
+.btn-09 .circle-a__side:nth-of-type(12),
+.btn-08 .circle-a__side:nth-of-type(12) {
+  background-image: linear-gradient(to top, #131615, #0a0b0b);
+}
+.btn-01 .circle-a__side:nth-of-type(13),
+.btn-02 .circle-a__side:nth-of-type(13),
+.btn-03 .circle-a__side:nth-of-type(13),
+.btn-04 .circle-a__side:nth-of-type(13),
+.btn-05 .circle-a__side:nth-of-type(13),
+.btn-06 .circle-a__side:nth-of-type(13),
+.btn-07 .circle-a__side:nth-of-type(13),
+.btn-09 .circle-a__side:nth-of-type(13),
+.btn-08 .circle-a__side:nth-of-type(13) {
+  background-image: linear-gradient(to top, #131615, #0a0b0b);
+}
+.btn-01 .circle-a__side:nth-of-type(14),
+.btn-02 .circle-a__side:nth-of-type(14),
+.btn-03 .circle-a__side:nth-of-type(14),
+.btn-04 .circle-a__side:nth-of-type(14),
+.btn-05 .circle-a__side:nth-of-type(14),
+.btn-06 .circle-a__side:nth-of-type(14),
+.btn-07 .circle-a__side:nth-of-type(14),
+.btn-09 .circle-a__side:nth-of-type(14),
+.btn-08 .circle-a__side:nth-of-type(14) {
+  background-image: linear-gradient(to top, #131615, #0a0b0b);
+}
+
+.btn-01 {
+  top: 18vmin;
+  left: 6vmin;
+}
+
+.btn-02 {
+  top: 25vmin;
+  left: 6vmin;
+}
+
+.btn-03 {
+  top: 21.5vmin;
+  left: 2.4vmin;
+}
+
+.btn-04 {
+  top: 21.5vmin;
+  left: 9.6vmin;
+}
+
+.btn-05 {
+  top: 6vmin;
+  right: 6vmin;
+}
+
+.btn-06 {
+  top: 13vmin;
+  right: 6vmin;
+}
+
+.btn-07 {
+  top: 9.5vmin;
+  right: 9.6vmin;
+}
+
+.btn-08 {
+  top: 9.5vmin;
+  right: 2.4vmin;
+}
+
+.btn-09 {
+  top: 30vmin;
+  right: 8.4vmin;
+}
+
+.btn-b01::before,
+.btn-01::before,
+.btn-02::before,
+.btn-03::before,
+.btn-04::before {
+  background-image: linear-gradient(rgba(220, 163, 159, 0.1), rgba(220, 163, 159, 0.1)), linear-gradient(20deg, rgba(155, 82, 80, 0.5), rgba(201, 130, 128, 0.5) 70%, transparent);
+}
+.btn-b01::after,
+.btn-01::after,
+.btn-02::after,
+.btn-03::after,
+.btn-04::after {
+  background-image: linear-gradient(20deg, rgba(179, 109, 107, 0.25), transparent);
+}
+
+.btn-b02::before,
+.btn-05::before,
+.btn-06::before,
+.btn-07::before,
+.btn-08::before,
+.btn-09::before {
+  background-image: linear-gradient(rgba(62, 165, 180, 0.2), rgba(75, 179, 191, 0.1)), linear-gradient(20deg, rgba(26, 76, 86, 0.75), rgba(62, 165, 180, 0.85) 70%, transparent);
+}
+.btn-b02::after,
+.btn-05::after,
+.btn-06::after,
+.btn-07::after,
+.btn-08::after,
+.btn-09::after {
+  background-image: linear-gradient(20deg, rgba(50, 145, 164, 0.25), transparent);
+}
+
+.screen {
+  position: absolute;
+  width: 60vmin;
+  height: 36vmin;
+  top: 2vmin;
+  left: 18vmin;
+  transform: translateZ(4.8vmin);
+  background-color: #7c747b;
+  background-image: radial-gradient(circle, #434c49, transparent 60%, #3c4441), linear-gradient(-35deg, #373e3c, #5a5459);
+}
+
+.sa,
+.sb {
+  width: 4vmin;
+  height: 36vmin;
+  position: absolute;
+}
+.sa__front,
+.sb__front {
+  width: 4vmin;
+  height: 0.4vmin;
+  transform-origin: bottom left;
+  transform: rotateX(-90deg) translateZ(35.6vmin);
+}
+.sa__back,
+.sb__back {
+  width: 4vmin;
+  height: 0.4vmin;
+  transform-origin: top left;
+  transform: rotateX(-90deg) rotateY(180deg) translateX(-4vmin) translateY(-0.4vmin);
+}
+.sa__right,
+.sb__right {
+  width: 36vmin;
+  height: 0.4vmin;
+  transform-origin: top left;
+  transform: rotateY(90deg) rotateZ(-90deg) translateZ(4vmin) translateX(-36vmin) translateY(-0.4vmin);
+}
+.sa__left,
+.sb__left {
+  width: 36vmin;
+  height: 0.4vmin;
+  transform-origin: top left;
+  transform: rotateY(-90deg) rotateZ(90deg) translateY(-0.4vmin);
+}
+.sa__top,
+.sb__top {
+  width: 4vmin;
+  height: 36vmin;
+  transform-origin: top left;
+  transform: translateZ(0.4vmin);
+}
+.sa__bottom,
+.sb__bottom {
+  width: 4vmin;
+  height: 36vmin;
+  transform-origin: top left;
+  transform: rotateY(180deg) translateX(-4vmin);
+}
+
+.sa {
+  left: 0vmin;
+  bottom: 0vmin;
+}
+.sa__front {
+  background-color: #172d36;
+}
+.sa__back {
+  background-color: #434c49;
+}
+.sa__left {
+  background-color: #434c49;
+}
+.sa__right {
+  background-color: #172d36;
+}
+.sa__top {
+  background-color: #746d73;
+}
+.sa__bottom {
+  background-color: #376957;
+}
+
+.sb {
+  right: 0vmin;
+  bottom: 0vmin;
+}
+.sb__front {
+  background-color: #172d36;
+}
+.sb__back {
+  background-color: #434c49;
+}
+.sb__left {
+  background-color: #172d36;
+}
+.sb__right {
+  background-color: #0e1b21;
+}
+.sb__top {
+  background-color: #746d73;
+}
+.sb__bottom {
+  background-color: #376957;
+}
+
+.sc,
+.sd {
+  width: 52vmin;
+  height: 2.8vmin;
+  position: absolute;
+}
+.sc__front,
+.sd__front {
+  width: 52vmin;
+  height: 0.4vmin;
+  transform-origin: bottom left;
+  transform: rotateX(-90deg) translateZ(2.4vmin);
+}
+.sc__back,
+.sd__back {
+  width: 52vmin;
+  height: 0.4vmin;
+  transform-origin: top left;
+  transform: rotateX(-90deg) rotateY(180deg) translateX(-52vmin) translateY(-0.4vmin);
+}
+.sc__right,
+.sd__right {
+  width: 2.8vmin;
+  height: 0.4vmin;
+  transform-origin: top left;
+  transform: rotateY(90deg) rotateZ(-90deg) translateZ(52vmin) translateX(-2.8vmin) translateY(-0.4vmin);
+}
+.sc__left,
+.sd__left {
+  width: 2.8vmin;
+  height: 0.4vmin;
+  transform-origin: top left;
+  transform: rotateY(-90deg) rotateZ(90deg) translateY(-0.4vmin);
+}
+.sc__top,
+.sd__top {
+  width: 52vmin;
+  height: 2.8vmin;
+  transform-origin: top left;
+  transform: translateZ(0.4vmin);
+}
+.sc__bottom,
+.sd__bottom {
+  width: 52vmin;
+  height: 2.8vmin;
+  transform-origin: top left;
+  transform: rotateY(180deg) translateX(-52vmin);
+}
+
+.sc {
+  left: 4vmin;
+  top: 0vmin;
+}
+.sc__front {
+  background-color: #172d36;
+}
+.sc__back {
+  background-color: #434c49;
+}
+.sc__top {
+  background-color: #746d73;
+}
+.sc__bottom {
+  background-color: #376957;
+}
+
+.sd {
+  left: 4vmin;
+  bottom: 0vmin;
+}
+.sd__front {
+  background-color: #172d36;
+}
+.sd__back {
+  background-color: #172d36;
+}
+.sd__top {
+  background-color: #746d73;
+}
+.sd__bottom {
+  background-color: #376957;
+}
+  </style>
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="main" id="h">
+  <div class="shadows-wrapper">
+    <div class="shadow sh01"></div>
+    <div class="shadow sh02"></div>
+  </div>
+  <div class="shadows"></div>
+  <div class="a">
+    <div class="a__front face"> 
+      <div class="curve c01">
+        <div class="curve c02">
+          <div class="curve c03">
+            <div class="curve c04">
+              <div class="curve c05"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="a__back face"> 
+      <div class="curve c01">
+        <div class="curve c02">
+          <div class="curve c03">
+            <div class="curve c04">
+              <div class="curve c05"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="a__right face"> </div>
+    <div class="a__left face"> </div>
+    <div class="a__top face"> </div>
+    <div class="a__bottom face"></div>
+  </div>
+  <div class="at">
+    <div class="at__front face"></div>
+    <div class="at__back face"> 
+      <div class="curve c01">
+        <div class="curve c02">
+          <div class="curve c03">
+            <div class="curve c04">
+              <div class="curve c05"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="at__right face"> </div>
+    <div class="at__top face"> </div>
+    <div class="at__bottom face"></div>
+  </div>
+  <div class="b">
+    <div class="b__front face"> 
+      <div class="curve c01">
+        <div class="curve c02">
+          <div class="curve c03">
+            <div class="curve c04">
+              <div class="curve c05"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="b__back face"> 
+      <div class="curve c01">
+        <div class="curve c02">
+          <div class="curve c03">
+            <div class="curve c04">
+              <div class="curve c05"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="b__right face"> </div>
+    <div class="b__left face"> </div>
+    <div class="b__top face"> </div>
+    <div class="b__bottom face"></div>
+  </div>
+  <div class="bt">
+    <div class="bt__front face"></div>
+    <div class="bt__back face"> 
+      <div class="curve c01">
+        <div class="curve c02">
+          <div class="curve c03">
+            <div class="curve c04">
+              <div class="curve c05"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bt__left face"> </div>
+    <div class="bt__top face"> </div>
+    <div class="bt__bottom face"></div>
+  </div>
+  <div class="buttons"> 
+    <div class="btn-b01 btn">
+      <div class="circle flex">
+        <div class="circle-a">
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__bottom"></div>
+        </div>
+      </div>
+    </div>
+    <div class="btn-b02 btn">
+      <div class="circle flex">
+        <div class="circle-a">
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__bottom"></div>
+        </div>
+      </div>
+    </div>
+    <div class="btn-01 btn">
+      <div class="circle flex">
+        <div class="circle-a">
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__bottom"></div>
+        </div>
+      </div>
+    </div>
+    <div class="btn-02 btn">
+      <div class="circle flex">
+        <div class="circle-a">
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__bottom"></div>
+        </div>
+      </div>
+    </div>
+    <div class="btn-03 btn">
+      <div class="circle flex">
+        <div class="circle-a">
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__bottom"></div>
+        </div>
+      </div>
+    </div>
+    <div class="btn-04 btn">
+      <div class="circle flex">
+        <div class="circle-a">
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__bottom"></div>
+        </div>
+      </div>
+    </div>
+    <div class="btn-05 btn">
+      <div class="circle flex">
+        <div class="circle-a">
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__bottom"></div>
+        </div>
+      </div>
+    </div>
+    <div class="btn-06 btn">
+      <div class="circle flex">
+        <div class="circle-a">
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__bottom"></div>
+        </div>
+      </div>
+    </div>
+    <div class="btn-07 btn">
+      <div class="circle flex">
+        <div class="circle-a">
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__bottom"></div>
+        </div>
+      </div>
+    </div>
+    <div class="btn-08 btn">
+      <div class="circle flex">
+        <div class="circle-a">
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__bottom"></div>
+        </div>
+      </div>
+    </div>
+    <div class="btn-09 btn">
+      <div class="circle flex">
+        <div class="circle-a">
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__side"></div>
+          <div class="circle-a__bottom"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="c">
+    <div class="c__front face"></div>
+    <div class="c__back face"></div>
+    <div class="c__right face"></div>
+    <div class="c__left face"></div>
+    <div class="c__top face"></div>
+    <div class="c__bottom face"></div>
+  </div>
+  <div class="screen">
+    <div class="sa">
+      <div class="sa__front face"></div>
+      <div class="sa__back face"></div>
+      <div class="sa__right face"></div>
+      <div class="sa__left face"></div>
+      <div class="sa__top face"></div>
+      <div class="sa__bottom face"></div>
+    </div>
+    <div class="sb">
+      <div class="sb__front face"></div>
+      <div class="sb__back face"></div>
+      <div class="sb__right face"></div>
+      <div class="sb__left face"></div>
+      <div class="sb__top face"></div>
+      <div class="sb__bottom face"></div>
+    </div>
+    <div class="sc">
+      <div class="sc__front face"></div>
+      <div class="sc__back face"></div>
+      <div class="sc__right face"></div>
+      <div class="sc__left face"></div>
+      <div class="sc__top face"></div>
+      <div class="sc__bottom face"></div>
+    </div>
+    <div class="sd">
+      <div class="sd__front face"></div>
+      <div class="sd__back face"></div>
+      <div class="sd__right face"></div>
+      <div class="sd__left face"></div>
+      <div class="sd__top face"></div>
+      <div class="sd__bottom face"></div>
+    </div>
+  </div>
+</div>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
